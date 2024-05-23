@@ -4,10 +4,8 @@
  */
 package main.Biome;
 
-import javafx.scene.control.Label;
 import main.*;
 import main.Entity.*;
-import main.Item.*;
 
 public abstract class Biome {
 
@@ -124,10 +122,10 @@ public abstract class Biome {
 			return false;
 		}
 		if(this.getTile(x, y).getBloc().isSolid()) {
-			if(this.getTile(x, y).getBloc().getId() == 3 && p.inventoryContainsItem(Constantes.ITEM_KEY.getId())) {
-				this.getTile(x, y).setBloc(Constantes.BLOC_0.deepCopy());
-			} else if (this.getTile(x,y).getBloc().getId() == 2 && p.inventoryContainsItem(Constantes.ITEM_TREE.getId())){
-				this.getTile(x, y).setBloc(Constantes.BLOC_1.deepCopy());
+			if(this.getTile(x, y).getBloc().getId() == 3 && p.inventoryContainsItem(Constantes.ITEM_KGATE.getId())) {
+				this.getTile(x, y).setBloc(Constantes.BLOC_DIRT.deepCopy());
+			} else if (this.getTile(x,y).getBloc().getId() == 2 && p.inventoryContainsItem(Constantes.ITEM_KTREE.getId())){
+				this.getTile(x, y).setBloc(Constantes.BLOC_ROUGE.deepCopy());
 			} else {
 				System.out.println("Bloque");
 				return false;
@@ -137,7 +135,7 @@ public abstract class Biome {
 		if(this.getTile(x,y).getPnj() != null || this.getTile(x, y).getPokemon() != null || this.getTile(x, y).getItem() != null) {
 			return false;
 		}
-		if(this.getTile(x, y).getBloc().getId() == Constantes.BLOC_6.getId() && !p.inventoryContainsItem(Constantes.ITEM_SWIM.getId())){
+		if(this.getTile(x, y).getBloc().getId() == Constantes.BLOC_WATER.getId() && !p.inventoryContainsItem(Constantes.ITEM_SWIM.getId())){
 			System.out.println("noyé");
 		}
 		return true;

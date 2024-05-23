@@ -6,7 +6,6 @@ package main.Biome;
 
 import main.*;
 import main.Entity.*;
-import main.Item.*;
 
 public class HouseBiome extends Biome {
 
@@ -29,17 +28,17 @@ public class HouseBiome extends Biome {
 		for (i = 0; i < this.getWidth(); i++) {
 			for (j = 0; j < this.getHeight(); j++) {
 				this.setTile(i, j, new Tile());
-				this.getTile(i, j).setBloc(Constantes.BLOC_9.deepCopy());
+				this.getTile(i, j).setBloc(Constantes.BLOC_CARPET.deepCopy());
 			}
 		}
 
 		for (i = 1; i < 11; i++) {
-			this.getTile(5, i).setBloc(Constantes.BLOC_7.deepCopy());
+			this.getTile(5, i).setBloc(Constantes.BLOC_PLANK.deepCopy());
 		}
 		for (i = 0; i < 11; i++) {
-			this.getTile(i, 5).setBloc(Constantes.BLOC_7.deepCopy());
+			this.getTile(i, 5).setBloc(Constantes.BLOC_PLANK.deepCopy());
 		}
-		this.getTile(5, 0).setBloc(Constantes.BLOC_10.deepCopy());
+		this.getTile(5, 0).setBloc(Constantes.BLOC_DOOR.deepCopy());
 		this.getTile(5, 0).setTpTile(0, 11, 6);
 
 		// PNJ
@@ -61,5 +60,7 @@ public class HouseBiome extends Biome {
 
 		this.getTile(4, 3).setPnj(new Pnj("main/img/marchand.png", dialogNew, "Marchand", 10));
 		this.getTile(4, 3).getPnj().getInventory().add(Constantes.ITEM_SWIM);
+
+		this.getTile(2,3).setItem(Constantes.ITEM_BOMB);
 	}
 }

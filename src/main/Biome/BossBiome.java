@@ -6,7 +6,6 @@ package main.Biome;
 
 import main.*;
 import main.Entity.*;
-import main.Item.Item;
 
 public class BossBiome extends Biome {
 
@@ -28,24 +27,24 @@ public class BossBiome extends Biome {
 		for (i = 0; i < this.getWidth(); i++) {
 			for (j = 0; j < this.getHeight(); j++) {
 				this.setTile(i, j, new Tile());
-				this.getTile(i, j).setBloc(Constantes.BLOC_11.deepCopy());
+				this.getTile(i, j).setBloc(Constantes.BLOC_GRAYSTONE.deepCopy());
 			}
 		}
 
 		// Enter
-		this.getTile(5, 0).setBloc(Constantes.BLOC_5.deepCopy());
+		this.getTile(5, 0).setBloc(Constantes.BLOC_NETHER.deepCopy());
 		this.getTile(5, 0).setTpTile(0, 3, 2);
 
-		this.getTile(1, 1).setBloc(Constantes.BLOC_6.deepCopy());
-		this.getTile(1, 2).setBloc(Constantes.BLOC_6.deepCopy());
-		this.getTile(1, 3).setBloc(Constantes.BLOC_6.deepCopy());
-		this.getTile(2, 2).setBloc(Constantes.BLOC_6.deepCopy());
+		this.getTile(1, 1).setBloc(Constantes.BLOC_WATER.deepCopy());
+		this.getTile(1, 2).setBloc(Constantes.BLOC_WATER.deepCopy());
+		this.getTile(1, 3).setBloc(Constantes.BLOC_WATER.deepCopy());
+		this.getTile(2, 2).setBloc(Constantes.BLOC_WATER.deepCopy());
 
-		this.getTile(8, 6).setBloc(Constantes.BLOC_6.deepCopy());
-		this.getTile(9, 6).setBloc(Constantes.BLOC_6.deepCopy());
-		this.getTile(9, 7).setBloc(Constantes.BLOC_6.deepCopy());
+		this.getTile(8, 6).setBloc(Constantes.BLOC_WATER.deepCopy());
+		this.getTile(9, 6).setBloc(Constantes.BLOC_WATER.deepCopy());
+		this.getTile(9, 7).setBloc(Constantes.BLOC_WATER.deepCopy());
 
-		this.getTile(2, 8).setBloc(Constantes.BLOC_6.deepCopy());
+		this.getTile(2, 8).setBloc(Constantes.BLOC_WATER.deepCopy());
 
 		// Papi
 		String[] dialog = { "A l'aide ... Bat le dracofeu" };

@@ -1,8 +1,4 @@
 package main;
-import javafx.collections.ObservableList;
-import javafx.scene.Node;
-import javafx.scene.control.Tooltip;
-import main.*;
 import main.Biome.*;
 import main.Item.*;
 import main.Entity.*;
@@ -322,7 +318,7 @@ public class Game {
 				this.mapScene.setRoot(this.loadBiome());
 				if(Objects.equals(duel.getPokemon().getName(), "M")) {
 					if(!checkPokemonBiome(Constantes.BIOME_BOSS, "M") && !checkPokemonBiome(Constantes.BIOME_VILLAGE, "M") && !checkPokemonBiome(Constantes.BIOME_HOUSE, "M")){
-						this.biome.getTile(duel.getxDuel(), duel.getyDuel()).setItem(Constantes.ITEM_BALL);
+						this.biome.getTile(duel.getxDuel(), duel.getyDuel()).setItem(Constantes.ITEM_POKEBALL);
 						this.mapScene.setRoot(this.loadBiome());
 					}
 				}
@@ -506,6 +502,40 @@ public class Game {
 			this.player.useObject(itemName);
 		} else if (Objects.equals(itemName, Constantes.ITEM_OVER.getName())) {
 			endGameOver();
+		} else if (Objects.equals(itemName, Constantes.ITEM_BOMB.getName())) {
+			replaceTilesAroundPlayer(3);
+		}
+	}
+
+	private void replaceTilesAroundPlayer(int radius) {
+		int playerX = this.player.getPosX();
+		int playerY = this.player.getPosY();
+
+		int mapWidth = this.biome.getWidth();  // Assuming you have a method to get the map width
+		int mapHeight = this.biome.getHeight();  // Assuming you have a method to get the map height
+
+		// Iterate over the area around the player
+		for (int x = Math.max(playerX - radius, 0); x <= Math.min(playerX + radius, mapWidth - 1); x++) {
+			for (int y = Math.max(playerY - radius, 0); y <= Math.min(playerY + radius, mapHeight - 1); y++) {
+
+				System.out.println("bomb");
+
+				// Get the current tile
+				Tile currentTile = this.biome.getTile(x, y);
+
+				// Check if the tile type is neither BLOC_6 nor BLOC_7
+				if (currentTile.getBloc().getId() != Constantes.BLOC_GATE.getId()
+						&& currentTile.getBloc().getId() != Constantes.BLOC_NETHER.getId()
+						&& currentTile.getBloc().getId() != Constantes.BLOC_HOUSE.getId()
+						&& currentTile.getBloc().getId() != Constantes.BLOC_DOOR.getId()
+						&& currentTile.getBloc().getId() != Constantes.BLOC_WATER.getId()) {
+
+					currentTile.setBloc(Constantes.BLOC_STONE.deepCopy());
+					currentTile.setPokemon(null);
+					currentTile.setItem(null);
+					this.mapScene.setRoot(this.loadBiome());
+				}
+			}
 		}
 	}
 
@@ -515,7 +545,7 @@ public class Game {
 		if(Constantes.BIOME_BOSS.getTile(5, 7).getPokemon() == null) {
 			System.out.println("Vous avez gagn�");
 			return Constantes.WIN_DRACO;
-		} else if (this.biome.getTile(this.player.getPosX(), this.player.getPosY()).getBloc().getId() == Constantes.BLOC_6.getId() && !player.inventoryContainsItem(3)){
+		} else if (this.biome.getTile(this.player.getPosX(), this.player.getPosY()).getBloc().getId() == Constantes.BLOC_WATER.getId() && !player.inventoryContainsItem(3)){
 			return Constantes.GAME_OVER;
 		} else if (!checkPokemonBiome(Constantes.BIOME_BOSS, "B")){
 			return Constantes.GAME_WIN;
