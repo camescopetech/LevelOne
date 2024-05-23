@@ -43,7 +43,7 @@ Gives the player 10 points of HP. This item is usable in dual, usable in biome a
 Lets the player go through the gate in the Village (2nd world), if the player doesn't have it he's blocked. This item is not usable in duel or in the biome and can't be sold/bought. <img src="src/main/img/key.png" alt="key.png" width="31" height="31">
 
 ### Swimmer 
-Lets the player walk on the water, if the player doesn't have it the game is instantly over. The item is not usable in duel or in the biome but can be sold/bought for 10 coins. <img src="src/main/img/armorite-ore.png" alt="key.png" width="21" height="21">
+Lets the player walk on the water, if the player doesn't have it the game is instantly over. The item is not usable in duel or in the biome but can be sold/bought for 10 coins. <img src="src/main/img/swimmer.png" alt="key.png" width="31" height="31">
 
 ### X 
 Kills the pokemon B in the Boss (3rd world) instantly if used. This item can be used in duel, can't be used in the biome and can't be sold/bought. <img src="src/main/img/toxic-orb.png" alt="key.png" width="31" height="31">

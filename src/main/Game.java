@@ -503,7 +503,7 @@ public class Game {
 		} else if (Objects.equals(itemName, Constantes.ITEM_OVER.getName())) {
 			endGameOver();
 		} else if (Objects.equals(itemName, Constantes.ITEM_BOMB_10.getName())) {
-			replaceTilesAroundPlayer(3, 10);
+			replaceTilesAroundPlayer(3, 30);
 		}
 	}
 
@@ -515,7 +515,12 @@ public class Game {
 		int mapHeight = this.biome.getHeight();  // Assuming you have a method to get the map height
 
 		double currentHp = this.player.getHp();
-		this.player.setHp(currentHp-damage);
+
+		if (damage > this.player.getHpMax()) {
+			this.player.setHp(0);
+		} else {
+			this.player.setHp(currentHp-damage);
+		}
 
 		// Iterate over the area around the player
 		for (int x = Math.max(playerX - radius, 0); x <= Math.min(playerX + radius, mapWidth - 1); x++) {
@@ -534,7 +539,14 @@ public class Game {
 						&& currentTile.getBloc().getId() != Constantes.BLOC_WATER.getId()) {
 
 					currentTile.setBloc(Constantes.BLOC_STONE.deepCopy());
-					currentTile.setPokemon(null);
+					if (currentTile.getPokemon() != null){
+						double currentHpPoke = currentTile.getPokemon().getHp();
+						if (damage > currentTile.getPokemon().getHpMax()) {
+							currentTile.setPokemon(null);
+						} else {
+							currentTile.getPokemon().setHp(currentHpPoke-damage);
+						}
+					}
 					currentTile.setItem(null);
 					this.mapScene.setRoot(this.loadBiome());
 				}
@@ -552,6 +564,8 @@ public class Game {
 			return Constantes.GAME_OVER;
 		} else if (!checkPokemonBiome(Constantes.BIOME_BOSS, "B")){
 			return Constantes.GAME_WIN;
+		} else if (this.player.getHp() == 0){
+			return Constantes.GAME_OVER;
 		}
 		
 		return Constantes.NO_WIN;
