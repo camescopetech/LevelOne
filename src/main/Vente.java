@@ -257,11 +257,11 @@ public class Vente {
         Button sellBtn = new Button("Vendre");
         VBox vBoxSell = new VBox();
         vBoxSell.getChildren().addAll(buyBtn, sellBtn);
-        buyBtn.setDisable(this.pnj.getInventory().isEmpty() || this.itemsBoxPnj.getValue() == null);
+        buyBtn.setDisable(this.pnj.getInventory().isEmpty());
         buyBtn.setOnAction(e -> {
             handleBuyBtn();
         });
-        sellBtn.setDisable(this.player.getInventory().isEmpty() || this.itemsBoxPlayer.getValue() == null);
+        sellBtn.setDisable(this.player.getInventory().isEmpty());
         sellBtn.setOnAction(e -> {
             handleSellBtn();
         });

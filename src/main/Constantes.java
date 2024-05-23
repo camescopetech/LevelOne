@@ -44,11 +44,11 @@ public class Constantes {
 	
 	//main.Item
 	public final static Item ITEM_BALL = new Item(0,"Pokeball", "main/img/pokeball.png",false, false, false, 0);
-	public final static Item ITEM_POTION = new Item(1,"Potion", "main/img/potion.png",true,3, true, true, 0);
+	public final static Item ITEM_POTION = new Item(1,"Potion", "main/img/potion.png",true,3, true, true, 30);
 	public final static Item ITEM_KEY = new Item(2,"Cle", "main/img/key.png",false, false, false, 0);
 	public final static Item ITEM_SWIM = new Item(3, "Swimmer", "main/img/pokeball.png", false, false, true, 10);
-	public final static Item ITEM_X = new Item(4, "X", "main/img/pokeball.png", true, 1, false, false, 0);
-	public final static Item ITEM_OVER = new Item(5, "over", "main/img/rouge.jpg", false, 1, true, false, 0);
+	public final static Item ITEM_X = new Item(4, "X", "main/img/toxic-orb.png", true, 1, false, false, 0);
+	public final static Item ITEM_OVER = new Item(5, "over", "main/img/flame.png", false, 1, true, false, 0);
 	public final static Item ITEM_TREE = new Item(6, "keyTree", "main/img/key.png", false, false, false, 0);
 
 

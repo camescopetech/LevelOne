@@ -322,7 +322,7 @@ public class Game {
 				this.mapScene.setRoot(this.loadBiome());
 				if(Objects.equals(duel.getPokemon().getName(), "M")) {
 					if(!checkPokemonBiome(Constantes.BIOME_BOSS, "M") && !checkPokemonBiome(Constantes.BIOME_VILLAGE, "M") && !checkPokemonBiome(Constantes.BIOME_HOUSE, "M")){
-						this.biome.getTile(duel.getxDuel(), duel.getyDuel()).setItem(Constantes.ITEM_POTION);
+						this.biome.getTile(duel.getxDuel(), duel.getyDuel()).setItem(Constantes.ITEM_BALL);
 						this.mapScene.setRoot(this.loadBiome());
 					}
 				}
