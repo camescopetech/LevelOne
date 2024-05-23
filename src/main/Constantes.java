@@ -48,7 +48,7 @@ public class Constantes {
 	public final static Item ITEM_X = new Item(4, "X", "main/img/toxic-orb.png", true, 1, false, false, 0);
 	public final static Item ITEM_OVER = new Item(5, "over", "main/img/flame.png", false, 1, true, false, 0);
 	public final static Item ITEM_KTREE = new Item(6, "keyTree", "main/img/key.png", false, false, false, 0);
-	public final static Item ITEM_BOMB = new Item(6, "bomb", "main/img/bomb.png", false, 1,true, false, 0);
+	public final static Item ITEM_BOMB_10 = new Item(6, "bomb", "main/img/bomb.png", false, 1,true, false, 0);
 
 
 	//main.Biome

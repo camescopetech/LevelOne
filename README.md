@@ -12,9 +12,16 @@ The player move with the arrow on your keyboard : up, down, left and right.
 
 A player can interact with PNJ, get items in the world, fight with pokemons and explore multiple worlds. 
 
-The player have an HP of 50. The player can loose HP during fights or or using items, but can also gain HP by using Potion.
+The player has 50 of HP and 50 coins to begin the game. 
+
+The player have an HP of 50. The player can loose HP during fights or using items, but can also gain HP by using Potion.
+The player inflicts 10 of damage to Pokemons. However, by using items during fights the player can inflict more damage.  
 
 In case of a game over because the player doesn't have any more HP, the player is spawned at the beginning of the game with his HP set to max.
+
+The player can explore 3 different worlds : house, village and boss.
+
+In order to win you must defeat the dracofeu in the boss world. 
 
 ## Inventory
 To access the player's inventory you must press I, to close it you have to press F too.
@@ -26,21 +33,52 @@ Items are distributed in the different worlds and can be collected by the player
 Items can be usable in the world, be sold or used during fight. Some items are one thing and not the other. 
 All Items have a price and can be sold/bought with a merchant.
 
-### Items found in the worlds
-- Pokeball : just a pokeball. It doesn't do anything. This item is not usable in duel, biome neither can be sold.
-- Potion : gives the player 10 points of HP. This item is usable in dual, not usable in biome and can be sold for 30 coins.
-- Gate Key : lets the player go through the gate in the Village (2nd world), if the player doesn't have it he's blocked. This item is not usable in duel or in the biome and can't be sold. 
-- Swimmer : lets the player walk on the water, if the player doesn't have it the game is instantly over. The item is not usable in duel or in the biome but can be sold for 10 coins.
-- X : kills the pokemon B in the Boss (3rd world) instantly if used. This item can be used in duel, can't be used in the biome and can't be sold.
-- Over : game over instantly. This item can't be used in duel neither can be sold, but can be used in the biome.
-- Tree Key : lets the player walk through trees. This item can't be used in duel and in the biome and can't be sold.
-- Bomb 10 : burn everything except doors/gate/.. in a 3 cases radius around the player. This item can't be used in duel but can be used in the biome and can't be sold.
+### Pokeball
+Just a pokeball. It doesn't do anything. This item is not usable in duel, biome neither can be sold/bought. ![pokeball.png](src%2Fmain%2Fimg%2Fpokeball.png)
+
+### Potion  
+Gives the player 10 points of HP. This item is usable in dual, usable in biome and can be sold/bought for 30 coins.<img src="src/main/img/potion.png" width="21" height="21">
+
+### Gate Key 
+Lets the player go through the gate in the Village (2nd world), if the player doesn't have it he's blocked. This item is not usable in duel or in the biome and can't be sold/bought. <img src="src/main/img/key.png" alt="key.png" width="31" height="31">
+
+### Swimmer 
+Lets the player walk on the water, if the player doesn't have it the game is instantly over. The item is not usable in duel or in the biome but can be sold/bought for 10 coins. <img src="src/main/img/armorite-ore.png" alt="key.png" width="21" height="21">
+
+### X 
+Kills the pokemon B in the Boss (3rd world) instantly if used. This item can be used in duel, can't be used in the biome and can't be sold/bought. <img src="src/main/img/toxic-orb.png" alt="key.png" width="31" height="31">
+
+### Over 
+Game over instantly. This item can't be used in duel neither can be sold/bought, but can be used in the biome. <img src="src/main/img/flame.png" alt="key.png" width="31" height="31">
+
+### Tree Key 
+Lets the player walk through trees. This item can't be used in duel and in the biome and can't be sold/bought.
+
+### Bomb 10 
+Burn everything except doors/gate/.. in a 3 cases radius around the player. This item can't be used in duel but can be used in the biome and can't be sold/bought. <img src="src/main/img/bomb.png" alt="key.png" width="31" height="31">
 
 ## PNJ
 PNJ can "talk" to the player with a dialog. You can interact with them by clicking on F when you are next to them. You can go through them.
-PNJ
 
+### Old Man
+This PNJ can only be talked to. <img src="src/main/img/vieux.png" alt="key.png" width="31" height="31">
 
+### Merchant
+This PNJ is here to buy items from you and sell some. It has 30 coins. <img src="src/main/img/marchand.png" alt="key.png" width="31" height="31">
 
+## Pokemon
+Pokemon are here to fight with you ! They can be found all around the worlds. To start a fight you must press F when you're next to a Pokemon.
 
+### Pikachu
+Pikachu inflicts 10 of damage when it's his turn and has 30 of HP. <img src="src/main/img/pikachu2.png" alt="key.png" width="31" height="31"> 
 
+### Pikachu 2
+Pikachu2 inflicts 10 of damage and has a 10 of HP. <img src="src/main/img/pikachu.png" alt="key.png" width="31" height="31">
+
+When all Pikachu 2 are killed in all the worlds an item appears at the place of the last Pikachu2 killed. 
+
+### Dracofeu
+It's the boss of the game, if you beat him you win. Dracofeu inflicts 15 of damage and has 50 of HP. <img src="src/main/img/dracofeu2.png" alt="key.png" width="31" height="31">
+
+### Slowbro
+Slowbro inflicts 10 of damage and has 10 of HP. If the item X is used against him he instantly dies. <img src="src/main/img/slowbro.png" alt="key.png" width="31" height="31">

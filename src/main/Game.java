@@ -502,17 +502,20 @@ public class Game {
 			this.player.useObject(itemName);
 		} else if (Objects.equals(itemName, Constantes.ITEM_OVER.getName())) {
 			endGameOver();
-		} else if (Objects.equals(itemName, Constantes.ITEM_BOMB.getName())) {
-			replaceTilesAroundPlayer(3);
+		} else if (Objects.equals(itemName, Constantes.ITEM_BOMB_10.getName())) {
+			replaceTilesAroundPlayer(3, 10);
 		}
 	}
 
-	private void replaceTilesAroundPlayer(int radius) {
+	private void replaceTilesAroundPlayer(int radius, double damage) {
 		int playerX = this.player.getPosX();
 		int playerY = this.player.getPosY();
 
 		int mapWidth = this.biome.getWidth();  // Assuming you have a method to get the map width
 		int mapHeight = this.biome.getHeight();  // Assuming you have a method to get the map height
+
+		double currentHp = this.player.getHp();
+		this.player.setHp(currentHp-damage);
 
 		// Iterate over the area around the player
 		for (int x = Math.max(playerX - radius, 0); x <= Math.min(playerX + radius, mapWidth - 1); x++) {

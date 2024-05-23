@@ -54,7 +54,7 @@ public class BossBiome extends Biome {
 		this.getTile(5, 7).setPokemon(new Pokemon("main/img/dracofeu2.png", "Dracofeu", 0, 10, 15, "main/img/dracofeu.png"));
 		this.getTile(5, 7).getPokemon().getInventory().add(Constantes.ITEM_POTION.deepCopy());
 
-		this.getTile(7, 5).setPokemon(new Pokemon("main/img/dracofeu2.png", "B", 0, 30, 5, "main/img/dracofeu.png"));
+		this.getTile(7, 5).setPokemon(new Pokemon("main/img/slowbro.png", "B", 0, 30, 5, "main/img/slowbro.png"));
 
 		this.getTile(6, 9).setItem(Constantes.ITEM_X.deepCopy());
 	}
