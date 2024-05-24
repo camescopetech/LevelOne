@@ -59,7 +59,7 @@ public class HouseBiome extends Biome {
 		this.getTile(6, 7).setPokemon(new Pokemon("main/img/pikachu.png", "M", 0, 10, 10, "main/img/pikachu.png"));
 
 		this.getTile(4, 3).setPnj(new Pnj("main/img/marchand.png", dialogNew, "Marchand", 10));
-		this.getTile(4, 3).getPnj().getInventory().add(Constantes.ITEM_SWIM);
+		this.getTile(4, 3).getPnj().getInventory().add(Constantes.ITEM_POTION);
 
 		this.getTile(2,3).setItem(Constantes.ITEM_BOMB_10.deepCopy());
 

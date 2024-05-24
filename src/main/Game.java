@@ -283,13 +283,14 @@ public class Game {
 			else if(this.biome.getTile(x, y).getItem() != null) {
 				
 				Item item = this.biome.getTile(x, y).getItem();
-				
-				this.biome.getTile(x, y).setItem(null);
+
 				this.mapScene.setRoot(this.loadBiome());
 
 				if (this.player.getInventory().size() < this.player.getMaxInventorySize()){
 					this.player.getInventory().add(item);
 					this.loadTextBox(this.player.getName() + " obtient " + item.getName());
+					this.biome.getTile(x, y).setItem(null);
+					this.mapScene.setRoot(this.loadBiome());
 				} else {
 					Alert alert = new Alert(Alert.AlertType.WARNING);
 					alert.setTitle("Inventaire plein");
