@@ -1,5 +1,7 @@
 package main;
 
+import javafx.scene.control.Alert;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import main.*;
 import main.Biome.*;
@@ -172,13 +174,21 @@ public class Vente {
                 }
             }
             if (selectedItem != null) {
-                this.player.buyObject(selectedItem);
-                this.pnj.getInventory().remove(selectedItem);
-                this.pnj.setMoney(this.pnj.getMoney()+selectedItem.getPrice());
-                System.out.println(selectedItem.getPrice() + " nouveau money player : " + this.player.getMoney()
-                + "nouveau pnj money : " + this.pnj.getMoney());
-                this.scene.setRoot(this.loadVente());
-                this.primaryStage.setScene(this.scene);
+                if (this.player.getMoney() > selectedItem.getPrice()) {
+                    this.player.buyObject(selectedItem);
+                    this.pnj.getInventory().remove(selectedItem);
+                    this.pnj.setMoney(this.pnj.getMoney()+selectedItem.getPrice());
+                    System.out.println(selectedItem.getPrice() + " nouveau money player : " + this.player.getMoney());
+                    this.scene.setRoot(this.loadVente());
+                    this.primaryStage.setScene(this.scene);
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Alerte de fonds insuffisants");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Le joueur n'a pas assez de sous.");
+
+                    alert.showAndWait();
+                }
             }
         }
     }
@@ -197,8 +207,7 @@ public class Vente {
                 this.player.sellObject(selectedItem);  // Effectue l'achat de l'objet
                 this.pnj.getInventory().add(selectedItem);
                 this.pnj.setMoney(this.pnj.getMoney()-selectedItem.getPrice());
-                System.out.println(selectedItem.getPrice() + " nouveau money player : " + this.player.getMoney()
-                        + "nouveau pnj money : " + this.pnj.getMoney());
+                System.out.println(selectedItem.getPrice() + " nouveau money player : " + this.player.getMoney());
                 this.scene.setRoot(this.loadVente());
                 this.primaryStage.setScene(this.scene);
             }
@@ -224,6 +233,7 @@ public class Vente {
                 gridPane.add(border, col, row);
             }
         }
+
 
         // ImgPokemon
         ImageView img = new ImageView(new Image(this.pnj.getSpritePath()));
@@ -257,11 +267,11 @@ public class Vente {
         Button sellBtn = new Button("Vendre");
         VBox vBoxSell = new VBox();
         vBoxSell.getChildren().addAll(buyBtn, sellBtn);
-        buyBtn.setDisable(this.pnj.getInventory().isEmpty());
+        buyBtn.setDisable(this.itemsBoxPnj.getItems().isEmpty());
         buyBtn.setOnAction(e -> {
             handleBuyBtn();
         });
-        sellBtn.setDisable(this.player.getInventory().isEmpty());
+        sellBtn.setDisable(this.itemsBoxPlayer.getItems().isEmpty());
         sellBtn.setOnAction(e -> {
             handleSellBtn();
         });

@@ -57,6 +57,8 @@ Lets the player walk through trees. This item can't be used in duel and in the b
 ### Bomb 10 
 Burn everything except doors/gate/.. in a 3 cases radius around the player. This item can't be used in duel but can be used in the biome and can't be sold/bought. <img src="src/main/img/bomb.png" alt="key.png" width="31" height="31">
 
+### Teleportation 
+When used in the inventory by clicking on it, teleports the player on a case randomly chosen in one of the biome, also chosen randomly. <img src="src/main/img/teleportation.png" alt="key.png" width="31" height="31">
 ## PNJ
 PNJ can "talk" to the player with a dialog. You can interact with them by clicking on F when you are next to them. You can go through them.
 

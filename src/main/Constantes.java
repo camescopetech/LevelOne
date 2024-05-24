@@ -44,12 +44,12 @@ public class Constantes {
 	public final static Item ITEM_POKEBALL = new Item(0,"Pokeball", "main/img/pokeball.png",false, false, false, 0);
 	public final static Item ITEM_POTION = new Item(1,"Potion", "main/img/potion.png",true,3, true, true, 30);
 	public final static Item ITEM_KGATE = new Item(2,"Cle", "main/img/key.png",false, false, false, 0);
-	public final static Item ITEM_SWIM = new Item(3, "Swimmer", "main/img/pokeball.png", false, false, true, 10);
+	public final static Item ITEM_SWIM = new Item(3, "Swimmer", "main/img/swimmer.png", false, false, true, 10);
 	public final static Item ITEM_X = new Item(4, "X", "main/img/toxic-orb.png", true, 1, false, false, 0);
 	public final static Item ITEM_OVER = new Item(5, "over", "main/img/flame.png", false, 1, true, false, 0);
 	public final static Item ITEM_KTREE = new Item(6, "keyTree", "main/img/key.png", false, false, false, 0);
-	public final static Item ITEM_BOMB_10 = new Item(6, "bomb", "main/img/bomb.png", false, 1,true, false, 0);
-
+	public final static Item ITEM_BOMB_10 = new Item(7, "bomb", "main/img/bomb.png", false, 1,true, false, 0);
+	public final static Item ITEM_TELEPORTATION = new Item(8, "teleportation", "main/img/teleportation.png", false, 15, true, true, 60);
 
 	//main.Biome
 	public final static Biome BIOME_VILLAGE = new VillageBiome();

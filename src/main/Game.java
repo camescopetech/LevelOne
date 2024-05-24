@@ -1,4 +1,6 @@
 package main;
+import javafx.scene.control.Alert;
+import javafx.scene.text.FontWeight;
 import main.Biome.*;
 import main.Item.*;
 import main.Entity.*;
@@ -400,7 +402,7 @@ public class Game {
 	        else {
 	        	x = this.getMinRowView();
 	        }
-	        
+
 	        int y;
 	        if(this.player.getPosY() <= this.getMinColView()) {
 	        	y = this.player.getPosY();
@@ -411,7 +413,20 @@ public class Game {
 	        else {
 	        	y = this.getMinColView();
 	        }
-	        
+
+			Label life = new Label(this.player.getName() + " : " + this.player.getHp() + " HP/ " + this.player.getHpMax());
+			life.setFont(Font.font("System", FontWeight.BOLD, 10));
+			life.setStyle( "-fx-text-fill: white; -fx-background-color: black");
+			gridPane.add(life, Constantes.NUMBER_OF_COL - 2, 0);
+			gridPane.setColumnSpan(life, 2);
+
+			Label money = new Label(this.player.getMoney() + " coins");
+			money.setFont(Font.font("System", FontWeight.BOLD, 10));
+			money.setTextFill(Color.WHITE);
+			money.setStyle( "-fx-text-fill: white; -fx-background-color: black");
+			gridPane.add(money, Constantes.NUMBER_OF_COL - 2, 1);
+			gridPane.setColumnSpan(money, 2);
+
 	        gridPane.add(this.player.getSprite(), x, y);
 		}
 		else {
@@ -504,6 +519,43 @@ public class Game {
 			endGameOver();
 		} else if (Objects.equals(itemName, Constantes.ITEM_BOMB_10.getName())) {
 			replaceTilesAroundPlayer(3, 30);
+		} else if (Objects.equals(itemName, Constantes.ITEM_TELEPORTATION.getName())){
+			teleportsPlayer();
+		}
+	}
+
+	private void teleportsPlayer(){
+		int idBiome = getRandomNumber(0, 2);
+		switch(idBiome){
+			case 0:
+				this.biome = Constantes.BIOME_VILLAGE;
+				break;
+			case 1:
+				this.biome = Constantes.BIOME_BOSS;
+				break;
+			case 2:
+				this.biome = Constantes.BIOME_HOUSE;
+				break;
+			default:
+				break;
+		}
+		int x = getRandomNumber(0, Constantes.NUMBER_OF_COL);
+		int y = getRandomNumber(0, Constantes.NUMBER_OF_ROW);
+		if (this.biome.getTile(x,y).getBloc().getId() != Constantes.BLOC_TREE.getId()
+				&& this.biome.getTile(x,y).getBloc().getId() != Constantes.BLOC_NETHER.getId()
+				&& this.biome.getTile(x,y).getBloc().getId() != Constantes.BLOC_HOUSE.getId()
+				&& this.biome.getTile(x,y).getBloc().getId() != Constantes.BLOC_DOOR.getId()
+				&& this.biome.getTile(x,y).getBloc().getId() != Constantes.BLOC_GATE.getId()) {
+			System.out.println(this.biome);
+			this.player.setPosX(x);
+			this.player.setPosY(y);
+			this.mapScene.setRoot(this.loadBiome());
+		} else {
+			Alert alert = new Alert(Alert.AlertType.WARNING);
+			alert.setTitle("Téléportation impossible");
+			alert.setHeaderText(null);
+			alert.setContentText("Teleportation impossinle");
+			alert.showAndWait();
 		}
 	}
 

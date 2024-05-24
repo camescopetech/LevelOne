@@ -62,5 +62,7 @@ public class HouseBiome extends Biome {
 		this.getTile(4, 3).getPnj().getInventory().add(Constantes.ITEM_SWIM);
 
 		this.getTile(2,3).setItem(Constantes.ITEM_BOMB_10);
+
+		this.getTile(8,9).setItem(Constantes.ITEM_TELEPORTATION);
 	}
 }
