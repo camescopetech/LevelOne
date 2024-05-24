@@ -50,6 +50,7 @@ public class Constantes {
 	public final static Item ITEM_KTREE = new Item(6, "keyTree", "main/img/key.png", false, false, false, 0);
 	public final static Item ITEM_BOMB_10 = new Item(7, "bomb", "main/img/bomb.png", false, 1,true, false, 0);
 	public final static Item ITEM_TELEPORTATION = new Item(8, "teleportation", "main/img/teleportation.png", false, 15, true, true, 60);
+	public final static Item ITEM_MALUS_50 = new Item(9, "malus50", "main/img/malus.png", true, 1, false, true, 60);
 
 	//main.Biome
 	public final static Biome BIOME_VILLAGE = new VillageBiome();

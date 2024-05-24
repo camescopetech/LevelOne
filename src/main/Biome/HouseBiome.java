@@ -46,7 +46,7 @@ public class HouseBiome extends Biome {
 		this.getTile(1, 2).setPnj(new Pnj("main/img/vieux.png", dialog, "vieux", 0));
 
 		String[] dialogNew = { "Bonne journee" };
-		this.getTile(7, 6).setPnj(new Pnj("main/img/vieux.png", dialogNew, "PNJ new", 0));
+		this.getTile(7, 6).setPnj(new Pnj("main/img/voleur.png", dialogNew, "voleur", 0));
 		this.getTile(7, 6).getPnj().getInventory().add(Constantes.ITEM_X);
 
 		// Loot
@@ -61,8 +61,9 @@ public class HouseBiome extends Biome {
 		this.getTile(4, 3).setPnj(new Pnj("main/img/marchand.png", dialogNew, "Marchand", 10));
 		this.getTile(4, 3).getPnj().getInventory().add(Constantes.ITEM_SWIM);
 
-		this.getTile(2,3).setItem(Constantes.ITEM_BOMB_10);
+		this.getTile(2,3).setItem(Constantes.ITEM_BOMB_10.deepCopy());
 
-		this.getTile(8,9).setItem(Constantes.ITEM_TELEPORTATION);
+		this.getTile(8,9).setItem(Constantes.ITEM_TELEPORTATION.deepCopy());
+		this.getTile(9,10).setItem(Constantes.ITEM_MALUS_50.deepCopy());
 	}
 }

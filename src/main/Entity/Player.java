@@ -32,7 +32,7 @@ public class Player extends FightingEntity {
 	 * The inventory is initialized as an empty ArrayList.
 	 */
 	public Player() {
-		super("main/img/player_south.png", "Sacha", 50, 50, 10, "main/img/duel_player.png");
+		super("main/img/player_south.png", "Sacha", 50, 50, 20, "main/img/duel_player.png");
 
 	}
 

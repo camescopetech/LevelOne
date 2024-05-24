@@ -233,7 +233,7 @@ public class Game {
 				
 				//int nLine = this.biome.getTile(x, y).getPnj().getDialog().length;
 				//int i = 0;
-				if(this.biome.getTile(x, y).getPnj().getName().equals("PNJ new")){
+				if(this.biome.getTile(x, y).getPnj().getName().equals("voleur")){
 					if(this.player.getInventory().isEmpty()){
 						System.out.println(this.player.getInventory().size());
 						this.loadTextBox(this.biome.getTile(x, y).getPnj().getDialog()[0]);
@@ -507,9 +507,7 @@ public class Game {
             	 }
             }
          }
-
         return gridPane;
-
 	}
 
 	public void useObjectInventory(String itemName){
@@ -521,6 +519,9 @@ public class Game {
 			replaceTilesAroundPlayer(3, 30);
 		} else if (Objects.equals(itemName, Constantes.ITEM_TELEPORTATION.getName())){
 			teleportsPlayer();
+		} else if (Objects.equals(itemName, Constantes.ITEM_MALUS_50.getName())) {
+			double currentAtk = this.player.getAtk();
+			this.player.setAtk(currentAtk*0.5);
 		}
 	}
 

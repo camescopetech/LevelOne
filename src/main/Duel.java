@@ -282,8 +282,13 @@ public class Duel {
 		// Atk
 		Button buttonAtk = new Button("Attaque");
 		buttonAtk.setOnAction(e -> {
-			pokemon.receiveDamage(this.player.getAtk());
-			this.nextTurn();
+			if (pokemon.getName().equals("B")){
+				pokemon.setHp(0);
+				this.nextTurn();
+			} else {
+				pokemon.receiveDamage(this.player.getAtk());
+				this.nextTurn();
+			}
 		});
 		gridPane.add(buttonAtk, 0, 2);
 
