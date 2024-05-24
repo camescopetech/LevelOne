@@ -6,6 +6,8 @@ LvlOne is a game lossely based on Pokemon. You can fight Pokemon, interact with 
 ```java --module-path "{PATH_TO_YOUR_JAVAFX_LIB}" --add-modules javafx.controls,javafx.fxml -jar LvlOne.jar```
 You need to be in the folder where your .jar is.
 
+```{PATH_TO_YOUR_JAVAFX_LIB}```is the path to the lib of javafx sdk 22. Java 21 is used for this project.
+
 # What can you find ?
 ## Player
 The player move with the arrow on your keyboard : up, down, left and right. 
