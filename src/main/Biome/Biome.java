@@ -125,7 +125,7 @@ public abstract class Biome {
 			if(this.getTile(x, y).getBloc().getId() == 3 && p.inventoryContainsItem(Constantes.ITEM_KGATE.getId())) {
 				this.getTile(x, y).setBloc(Constantes.BLOC_DIRT.deepCopy());
 			} else if (this.getTile(x,y).getBloc().getId() == 2 && p.inventoryContainsItem(Constantes.ITEM_KTREE.getId())){
-				this.getTile(x, y).setBloc(Constantes.BLOC_ROUGE.deepCopy());
+				this.getTile(x, y).setBloc(Constantes.BLOC_TREE_NOTSOLID.deepCopy());
 			} else {
 				System.out.println("Bloque");
 				return false;

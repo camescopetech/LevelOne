@@ -35,28 +35,28 @@ public class VillageBiome extends Biome {
 		// Forest
 		for (i = 0; i < 4; i++) {
 			for (j = 0; j < 2; j++) {
-				this.getTile(j, i).setBloc(Constantes.BLOC_TREE.deepCopy());
+				this.getTile(j, i).setBloc(Constantes.BLOC_TREE_SOLID.deepCopy());
 			}
 		}
 		for (i = 0; i < 4; i++) {
 			for (j = 5; j < 7; j++) {
-				this.getTile(j, i).setBloc(Constantes.BLOC_TREE.deepCopy());
+				this.getTile(j, i).setBloc(Constantes.BLOC_TREE_SOLID.deepCopy());
 			}
 		}
 		for (i = 0; i < 2; i++) {
 			for (j = 6; j < 22; j++) {
-				this.getTile(j, i).setBloc(Constantes.BLOC_TREE.deepCopy());
+				this.getTile(j, i).setBloc(Constantes.BLOC_TREE_SOLID.deepCopy());
 			}
 		}
-		this.getTile(1, 4).setBloc(Constantes.BLOC_TREE.deepCopy());
-		this.getTile(2, 4).setBloc(Constantes.BLOC_TREE.deepCopy());
-		this.getTile(2, 0).setBloc(Constantes.BLOC_TREE.deepCopy());
-		this.getTile(3, 0).setBloc(Constantes.BLOC_TREE.deepCopy());
-		this.getTile(4, 0).setBloc(Constantes.BLOC_TREE.deepCopy());
-		this.getTile(2, 1).setBloc(Constantes.BLOC_TREE.deepCopy());
-		this.getTile(4, 1).setBloc(Constantes.BLOC_TREE.deepCopy());
-		this.getTile(4, 4).setBloc(Constantes.BLOC_TREE.deepCopy());
-		this.getTile(5, 4).setBloc(Constantes.BLOC_TREE.deepCopy());
+		this.getTile(1, 4).setBloc(Constantes.BLOC_TREE_SOLID.deepCopy());
+		this.getTile(2, 4).setBloc(Constantes.BLOC_TREE_SOLID.deepCopy());
+		this.getTile(2, 0).setBloc(Constantes.BLOC_TREE_SOLID.deepCopy());
+		this.getTile(3, 0).setBloc(Constantes.BLOC_TREE_SOLID.deepCopy());
+		this.getTile(4, 0).setBloc(Constantes.BLOC_TREE_SOLID.deepCopy());
+		this.getTile(2, 1).setBloc(Constantes.BLOC_TREE_SOLID.deepCopy());
+		this.getTile(4, 1).setBloc(Constantes.BLOC_TREE_SOLID.deepCopy());
+		this.getTile(4, 4).setBloc(Constantes.BLOC_TREE_SOLID.deepCopy());
+		this.getTile(5, 4).setBloc(Constantes.BLOC_TREE_SOLID.deepCopy());
 
 		// Water
 		for (i = 0; i < 6; i++) {

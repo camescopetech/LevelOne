@@ -58,7 +58,11 @@ Lets the player walk through trees. This item can't be used in duel and in the b
 Burn everything except doors/gate/.. in a 3 cases radius around the player. This item can't be used in duel but can be used in the biome and can't be sold/bought. <img src="src/main/img/bomb.png" alt="key.png" width="31" height="31">
 
 ### Teleportation 
-When used in the inventory by clicking on it, teleports the player on a case randomly chosen in one of the biome, also chosen randomly. <img src="src/main/img/teleportation.png" alt="key.png" width="31" height="31">
+When used in the inventory by clicking on it, teleports the player on a case randomly chosen in one of the biome, also chosen randomly. This item can be bought/sell for 60 coins. <img src="src/main/img/teleportation.png" alt="key.png" width="31" height="31">
+
+### Malus 50
+When used during a duel or in the biom, reduce the attack of the player by 50%. This item can be sold/bought for 60 coins. <img src="src/main/img/malus.png" alt="key.png" width="31" height="31">
+
 ## PNJ
 PNJ can "talk" to the player with a dialog. You can interact with them by clicking on F when you are next to them. You can go through them.
 
@@ -83,4 +87,4 @@ When all Pikachu 2 are killed in all the worlds an item appears at the place of 
 It's the boss of the game, if you beat him you win. Dracofeu inflicts 15 of damage and has 50 of HP. <img src="src/main/img/dracofeu2.png" alt="key.png" width="31" height="31">
 
 ### Slowbro
-Slowbro inflicts 10 of damage and has 10 of HP. If the item X is used against him he instantly dies. <img src="src/main/img/slowbro.png" alt="key.png" width="31" height="31">
+Slowbro inflicts 10 of damage and has 10 of HP, however this pokemon is always killed with only one attack by the player. If the item X is used against him he instantly dies. <img src="src/main/img/slowbro.png" alt="key.png" width="31" height="31">

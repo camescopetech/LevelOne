@@ -542,7 +542,7 @@ public class Game {
 		}
 		int x = getRandomNumber(0, Constantes.NUMBER_OF_COL);
 		int y = getRandomNumber(0, Constantes.NUMBER_OF_ROW);
-		if (this.biome.getTile(x,y).getBloc().getId() != Constantes.BLOC_TREE.getId()
+		if (this.biome.getTile(x,y).getBloc().getId() != Constantes.BLOC_TREE_SOLID.getId()
 				&& this.biome.getTile(x,y).getBloc().getId() != Constantes.BLOC_NETHER.getId()
 				&& this.biome.getTile(x,y).getBloc().getId() != Constantes.BLOC_HOUSE.getId()
 				&& this.biome.getTile(x,y).getBloc().getId() != Constantes.BLOC_DOOR.getId()
