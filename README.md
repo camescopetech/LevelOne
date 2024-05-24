@@ -67,11 +67,13 @@ When used during a duel or in the biom, reduce the attack of the player by 50%. 
 PNJ can "talk" to the player with a dialog. You can interact with them by clicking on F when you are next to them. You can go through them.
 
 ### Old Man
-This PNJ can only be talked to. <img src="src/main/img/vieux.png" alt="key.png" width="31" height="31">
+This PNJ can only be talked to, you can find different versions of him in all worlds. <img src="src/main/img/vieux.png" alt="key.png" width="31" height="31">
 
 ### Merchant
-This PNJ is here to buy items from you and sell some. It has 30 coins. <img src="src/main/img/marchand.png" alt="key.png" width="31" height="31">
+This PNJ is here to buy items from you and sell some. It has 30 coins. You can find the merchant in the House (1st world). <img src="src/main/img/marchand.png" alt="key.png" width="31" height="31">
 
+### Thief
+This PNJ can steal you. If your inventory is empty the thief onyl says "Have a good day to you", however if you have more than one item in your inventory, the thief steals one item randomly. You can't interact more than that. <img src="src/main/img/voleur.png" alt="key.png" width="31" height="31">
 ## Pokemon
 Pokemon are here to fight with you ! They can be found all around the worlds. To start a fight you must press F when you're next to a Pokemon.
 
