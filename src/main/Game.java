@@ -317,14 +317,14 @@ public class Game {
             this.primaryStage.setScene(this.mapScene);
             
             if(duel.isPlayerWin()) {
-				if(duel.getPokemon().getReward() != null) {
-
-					this.mapScene.setRoot(this.loadBiome());
-					this.loadTextBox(this.player.getName() + " obtient " + duel.getPokemon().getReward().getName());
-					this.player.getInventory().add(duel.getPokemon().getReward());
+				if(duel.getPokemon().getListReward() != null) {
+					for (int i = 0; i < duel.getPokemon().getListReward().size(); i++){
+						this.mapScene.setRoot(this.loadBiome());
+						this.loadTextBox(this.player.getName() + " obtient " + duel.getPokemon().getReward().getName());
+						this.player.getInventory().add(duel.getPokemon().getListRewardElement(i));
+					}
 
 				}
-
 				this.biome.getTile(x, y).setPokemon(null);
 				this.mapScene.setRoot(this.loadBiome());
 				if(Objects.equals(duel.getPokemon().getName(), "M")) {
@@ -531,6 +531,10 @@ public class Game {
 		} else if (Objects.equals(itemName, Constantes.ITEM_MALUS_50.getName())) {
 			double currentAtk = this.player.getAtk();
 			this.player.setAtk(currentAtk*0.5);
+		} else if (Objects.equals(itemName, Constantes.ITEM_COIN_10.getName())) {
+			double currentMoney = this.player.getMoney();
+			this.player.setMoney(currentMoney+10);
+			this.mapScene.setRoot(this.loadBiome());
 		}
 	}
 

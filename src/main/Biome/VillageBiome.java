@@ -6,6 +6,9 @@ package main.Biome;
 
 import main.*;
 import main.Entity.*;
+import main.Item.Item;
+
+import java.util.List;
 
 public class VillageBiome extends Biome {
 
@@ -125,6 +128,9 @@ public class VillageBiome extends Biome {
 		// Pokemon
 		this.getTile(4, 16).setPokemon(new Pokemon("main/img/pikachu2.png", "Pikachu", 0, 30, 10, "main/img/pikachu.png"));
 		this.getTile(4, 16).getPokemon().setReward(Constantes.ITEM_KGATE.deepCopy());
+		Item[] listReward = {Constantes.ITEM_KGATE.deepCopy(), Constantes.ITEM_COIN_10.deepCopy()};
+		this.getTile(4, 16).getPokemon().setListReward(List.of(listReward));
+
 		this.getTile(6, 7).setPokemon(new Pokemon("main/img/pikachu.png", "M", 0, 10, 10, "main/img/pikachu.png"));
 
 		// House

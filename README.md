@@ -66,6 +66,9 @@ When used in the inventory by clicking on it, teleports the player on a case ran
 ### Malus 50
 When used during a duel or in the biom, reduce the attack of the player by 50%. This item can be sold/bought for 60 coins. <img src="src/main/img/malus.png" alt="key.png" width="31" height="31">
 
+### 10 coins
+When used, gives 10 coins to the player. This item can't be used in duel but can be used in the biome by clicking on it in the inventory. This item can be sold/bought for 10 coins. <img src="src/main/img/10coins.png" alt="key.png" width="31" height="31">
+
 ## PNJ
 PNJ can "talk" to the player with a dialog. You can interact with them by clicking on F when you are next to them. You can go through them.
 
