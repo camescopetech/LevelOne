@@ -13,6 +13,7 @@ The player move with the arrow on your keyboard : up, down, left and right.
 A player can interact with PNJ, get items in the world, fight with pokemons and explore multiple worlds. 
 
 The player has 50 of HP and 50 coins to begin the game. 
+The player's inventory can hold 10 items max. 
 
 The player have an HP of 50. The player can loose HP during fights or using items, but can also gain HP by using Potion.
 The player inflicts 10 of damage to Pokemons. However, by using items during fights the player can inflict more damage.  
@@ -27,6 +28,8 @@ In order to win you must defeat the dracofeu in the boss world.
 To access the player's inventory you must press I, to close it you have to press F too.
 
 An item can be used in the world by clicking on it. Some items are not usable in the world, therefore clicking on them won't do anything.
+
+The inventory has a max size, the player can't buy or collect more item from the world.
 
 ## Items
 Items are distributed in the different worlds and can be collected by the player. They appear in his inventory. 
@@ -70,7 +73,7 @@ PNJ can "talk" to the player with a dialog. You can interact with them by clicki
 This PNJ can only be talked to, you can find different versions of him in all worlds. <img src="src/main/img/vieux.png" alt="key.png" width="31" height="31">
 
 ### Merchant
-This PNJ is here to buy items from you and sell some. It has 30 coins. You can find the merchant in the House (1st world). <img src="src/main/img/marchand.png" alt="key.png" width="31" height="31">
+This PNJ is here to buy items from you and sell some. It has a lot of coins and can buy anything from you and sell you his inventory. You can find the merchant in the House (1st world). <img src="src/main/img/marchand.png" alt="key.png" width="31" height="31">
 
 ### Thief
 This PNJ can steal you. If your inventory is empty the thief onyl says "Have a good day to you", however if you have more than one item in your inventory, the thief steals one item randomly. You can't interact more than that. <img src="src/main/img/voleur.png" alt="key.png" width="31" height="31">
