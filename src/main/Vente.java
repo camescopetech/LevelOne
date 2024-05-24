@@ -234,7 +234,6 @@ public class Vente {
             }
         }
 
-
         // ImgPokemon
         ImageView img = new ImageView(new Image(this.pnj.getSpritePath()));
         img.setFitHeight(Constantes.STAGE_HEIGHT / 3);
