@@ -1,5 +1,6 @@
 package main.Entity;
 
+import javafx.scene.control.Alert;
 import main.*;
 import main.Biome.*;
 import main.Item.*;
@@ -33,6 +34,7 @@ public class Entity {
 	 */
 	private String name;
 	private double money;
+	private int maxInventorySize;
 
 	//Cons
 	/**
@@ -43,7 +45,7 @@ public class Entity {
 	 * @param spritePath the file path of the entity's sprite
 	 * @param name       the name of the entity
 	 */
-	public Entity(String spritePath, String name, double money) {
+	public Entity(String spritePath, String name, double money, int maxInventorySize) {
 		this.sprite = new ImageView(new Image(spritePath));
 		this.setSpritePath(spritePath);
 		this.sprite.setFitHeight(Constantes.CASE_HEIGHT);
@@ -51,6 +53,7 @@ public class Entity {
 		this.inventory = new ArrayList<Item>();
 		this.name = name;
 		this.money = money;
+		this.maxInventorySize = maxInventorySize;
 	}
 
 	//GetSet
@@ -148,6 +151,24 @@ public class Entity {
 		this.money = money;
 	}
 
+	/**
+	 * Returns the maximum number of items the inventory can hold.
+	 *
+	 * @return the maximum number of items the inventory can hold
+	 */
+	public int getMaxInventorySize() {
+		return maxInventorySize;
+	}
+
+	/**
+	 * Sets the maximum number of items the inventory can hold.
+	 *
+	 * @param maxInventorySize the maximum number of items the inventory can hold
+	 */
+	public void setMaxInventorySize(int maxInventorySize) {
+		this.maxInventorySize = maxInventorySize;
+	}
+
 	//Meth
 	/**
 	 * Returns true if the entity's inventory contains an item with the given ID,
@@ -198,23 +219,49 @@ public class Entity {
 
 	}
 
+	/**
+	 * Attempts to add the given item to the entity's inventory.
+	 * If the inventory is full, a message is printed and the item is not added.
+	 *
+	 * @param item the item to add to the inventory
+	 */
 	public void buyObject(Item item) {
-		if (this.money > item.getPrice()) {
-			this.money = this.money - item.getPrice();
-			this.getInventory().add(item);
+		if (this.inventory.size() < this.maxInventorySize) {
+			if (this.money >= item.getPrice()) {
+				this.money -= item.getPrice();
+				this.inventory.add(item);
+			} else {
+				Alert alert = new Alert(Alert.AlertType.WARNING);
+				alert.setTitle("Fond insuffisant");
+				alert.setHeaderText(null);
+				alert.setContentText("Fond insuffisant");
+				alert.showAndWait();
+			}
 		} else {
-			System.out.println("impossible acheter");
+			Alert alert = new Alert(Alert.AlertType.WARNING);
+			alert.setTitle("Inventaire plein");
+			alert.setHeaderText(null);
+			alert.setContentText("Votre inventaire est plein");
+			alert.showAndWait();
 		}
 	}
 
+	/**
+	 * Sells an item from the inventory and adds its price to the entity's money.
+	 *
+	 * @param item the item to sell
+	 */
 	public void sellObject(Item item) {
-		if (this.getInventory().contains(item)){
-			this.money = this.money + item.getPrice();
+		if (this.getInventory().contains(item)) {
+			this.money += item.getPrice();
 			this.getInventory().remove(item);
 		} else {
-			System.out.println("vente impossinle");
+			Alert alert = new Alert(Alert.AlertType.WARNING);
+			alert.setTitle("Objet non présent dans l'inventaire");
+			alert.setHeaderText(null);
+			alert.setContentText("Objet non present dans l'inventaire");
+			alert.showAndWait();
 		}
-
 	}
 
 }

@@ -43,8 +43,8 @@ public class FightingEntity extends Entity {
 	 * @param atk            the attack power (atk) of the FightingEntity
 	 * @param duelSpritePath the file path of the sprite to be used in combat for the FightingEntity
 	 */
-	public FightingEntity(String spritePath, String name, double money, double hp, double atk, String duelSpritePath) {
-		super(spritePath, name, money);
+	public FightingEntity(String spritePath, String name, double money, int maxInventory, double hp, double atk, String duelSpritePath) {
+		super(spritePath, name, money, maxInventory);
 		this.hpMax = hp;
 		this.hp = hp;
 		this.atk = atk;

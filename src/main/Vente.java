@@ -248,10 +248,9 @@ public class Vente {
         gridPane.add(imgPlayer, 0, 1);
 
         // Money PNJ
-        Label moneyPnj = new Label(this.pnj.getMoney() + " coins");
         VBox vBoxPnj = new VBox();
         this.loadItemBoxPnj();
-        vBoxPnj.getChildren().addAll(moneyPnj, this.itemsBoxPnj);
+        vBoxPnj.getChildren().addAll(this.itemsBoxPnj);
         gridPane.add(vBoxPnj, 0, 0);
 
         // Money Player
@@ -267,7 +266,7 @@ public class Vente {
         Button sellBtn = new Button("Vendre");
         VBox vBoxSell = new VBox();
         vBoxSell.getChildren().addAll(buyBtn, sellBtn);
-        buyBtn.setDisable(this.itemsBoxPnj.getItems().isEmpty());
+        buyBtn.setDisable(this.itemsBoxPnj.getItems().isEmpty() || this.player.getMaxInventorySize() == this.player.getInventory().size());
         buyBtn.setOnAction(e -> {
             handleBuyBtn();
         });

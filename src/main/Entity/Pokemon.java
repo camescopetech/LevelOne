@@ -38,7 +38,7 @@ public class Pokemon extends FightingEntity {
 	 * @param duelSpritePath the file path of the sprite to be used in combat for the Pokemon
 	 */
 	public Pokemon(String spritePath, String name, double money, double hp, double atk, String duelSpritePath) {
-		super(spritePath, name, money, hp, atk, duelSpritePath);
+		super(spritePath, name, money, 10, hp, atk, duelSpritePath);
 
 	}
 

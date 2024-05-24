@@ -26,7 +26,7 @@ public class Pnj extends Entity {
 	 * @param name        the name of the entity
 	 */
 	public Pnj(String spritePath, String[] dialog, String name, double money) {
-		super(spritePath, name, money);
+		super(spritePath, name, money, 10);
 		this.dialog = dialog;
 	}
 

@@ -240,6 +240,7 @@ public class Game {
 					} else {
 						int ran = getRandomNumber(0, this.player.getInventory().size());
 						this.player.getInventory().remove(ran);
+						this.loadTextBox("Je t'ai vole un objet au hasard");
 					}
 				} else if(this.biome.getTile(x, y).getPnj().getName().equals("Marchand")){
 					System.out.println("Debut vente");
@@ -285,10 +286,17 @@ public class Game {
 				
 				this.biome.getTile(x, y).setItem(null);
 				this.mapScene.setRoot(this.loadBiome());
-				
-				this.player.getInventory().add(item);
-				this.loadTextBox(this.player.getName() + " obtient " + item.getName());
-				
+
+				if (this.player.getInventory().size() < this.player.getMaxInventorySize()){
+					this.player.getInventory().add(item);
+					this.loadTextBox(this.player.getName() + " obtient " + item.getName());
+				} else {
+					Alert alert = new Alert(Alert.AlertType.WARNING);
+					alert.setTitle("Inventaire plein");
+					alert.setHeaderText(null);
+					alert.setContentText("Votre inventaire est plein");
+					alert.showAndWait();
+				}
 			}
 
 		}
