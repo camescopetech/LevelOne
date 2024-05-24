@@ -40,7 +40,7 @@ Just a pokeball. It doesn't do anything. This item is not usable in duel, biome 
 Gives the player 10 points of HP. This item is usable in dual, usable in biome and can be sold/bought for 30 coins.<img src="src/main/img/potion.png" width="21" height="21">
 
 ### Gate Key 
-Lets the player go through the gate in the Village (2nd world), if the player doesn't have it he's blocked. This item is not usable in duel or in the biome and can't be sold/bought. <img src="src/main/img/key.png" alt="key.png" width="31" height="31">
+Lets the player go through the gate in the Village (2nd world), if the player doesn't have it he's blocked. This item is not usable in duel or in the biome and can't be sold/bought. <img src="src/main/img/keyGate.png" alt="key.png" width="31" height="31">
 
 ### Swimmer 
 Lets the player walk on the water, if the player doesn't have it the game is instantly over. The item is not usable in duel or in the biome but can be sold/bought for 10 coins. <img src="src/main/img/swimmer.png" alt="key.png" width="31" height="31">
@@ -52,7 +52,7 @@ Kills the pokemon B in the Boss (3rd world) instantly if used. This item can be 
 Game over instantly. This item can't be used in duel neither can be sold/bought, but can be used in the biome. <img src="src/main/img/flame.png" alt="key.png" width="31" height="31">
 
 ### Tree Key 
-Lets the player walk through trees. This item can't be used in duel and in the biome and can't be sold/bought.
+Lets the player walk through trees. This item can't be used in duel and in the biome and can't be sold/bought. <img src="src/main/img/keyTree.png" alt="key.png" width="31" height="31">
 
 ### Bomb 10 
 Burn everything except doors/gate/.. in a 3 cases radius around the player. This item can't be used in duel but can be used in the biome and can't be sold/bought. <img src="src/main/img/bomb.png" alt="key.png" width="31" height="31">
