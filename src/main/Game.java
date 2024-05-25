@@ -1,5 +1,7 @@
 package main;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.FontWeight;
 import main.Biome.*;
 import main.Item.*;
@@ -514,9 +516,19 @@ public class Game {
 
             		 Item item = this.player.getInventoryElement(i*Constantes.NUMBER_OF_COL + j);
             		 ImageView img = item.getSprite();
+					 img.setFitWidth(Constantes.CASE_WIDTH);
+					 img.setFitHeight(Constantes.CASE_HEIGHT * 0.7);
 
+					 Label str = new Label(item.getName());
+					 str.setMaxWidth(Constantes.CASE_WIDTH);
+					 str.setWrapText(true);
 
-            		 gridPane.add(img, j, i);
+					 VBox vBox = new VBox(img, str);
+					 vBox.setAlignment(Pos.CENTER);
+					 vBox.setMaxWidth(Constantes.CASE_WIDTH);
+					 vBox.setMaxHeight(Constantes.CASE_HEIGHT);
+
+            		 gridPane.add(vBox, j, i);
 
 					 img.setOnMouseClicked(e -> {
 						 System.out.println(item.getName());
