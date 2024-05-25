@@ -27,7 +27,7 @@ public class CustomPopup {
         Text contentText = new Text(content);
 
         // Bouton de fermeture
-        Button closeButton = new Button("Fermer");
+        Button closeButton = new Button("OK");
         closeButton.setOnAction(e -> popupWindow.close());
 
         // Layout du pop-up
