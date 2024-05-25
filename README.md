@@ -31,7 +31,7 @@ To access the player's inventory you must press I, to close it you have to press
 
 An item can be used in the world by clicking on it. Some items are not usable in the world, therefore clicking on them won't do anything.
 
-The inventory has a max size, the player can't buy or collect more item from the world.
+The inventory has a max size, the player can't buy or collect more item from the world if the inventory is at max capacity.
 
 ## Items
 Items are distributed in the different worlds and can be collected by the player. They appear in his inventory. 
@@ -72,7 +72,9 @@ When used during a duel or in the biom, reduce the attack of the player by 50%. 
 When used, gives 10 coins to the player. This item can't be used in duel but can be used in the biome by clicking on it in the inventory. This item can be sold/bought for 10 coins. <img src="src/main/img/10coins.png" alt="key.png" width="31" height="31">
 
 ## PNJ
-PNJ can "talk" to the player with a dialog. You can interact with them by clicking on F when you are next to them. You can go through them.
+PNJ can "talk" to the player with a dialog. You can interact with them by clicking on F when you are next to them. You can't go through them.
+
+A popup is displayed when you interact with the PNJ to know which one you're talking to and what you can do. 
 
 ### Old Man
 This PNJ can only be talked to, you can find different versions of him in all worlds. <img src="src/main/img/vieux.png" alt="key.png" width="31" height="31">
@@ -88,13 +90,13 @@ Pokemon are here to fight with you ! They can be found all around the worlds. To
 ### Pikachu
 Pikachu inflicts 10 of damage when it's his turn and has 30 of HP. <img src="src/main/img/pikachu2.png" alt="key.png" width="31" height="31"> 
 
-### Pikachu 2
-Pikachu2 inflicts 10 of damage and has a 10 of HP. <img src="src/main/img/pikachu.png" alt="key.png" width="31" height="31">
+### M
+Pikachu2 inflicts 10 of damage and has a 10 of HP. <img src="src/main/img/magneton.png" alt="key.png" width="31" height="31">
 
 When all Pikachu 2 are killed in all the worlds an item appears at the place of the last Pikachu2 killed. 
 
 ### Dracofeu
 It's the boss of the game, if you beat him you win. Dracofeu inflicts 15 of damage and has 50 of HP. <img src="src/main/img/dracofeu2.png" alt="key.png" width="31" height="31">
 
-### Slowbro
+### B
 Slowbro inflicts 10 of damage and has 10 of HP, however this pokemon is always killed with only one attack by the player. If the item X is used against him he instantly dies. <img src="src/main/img/slowbro.png" alt="key.png" width="31" height="31">
