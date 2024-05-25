@@ -305,7 +305,10 @@ public class Game {
 			else if(this.biome.getTile(x, y).getPokemon() != null) {
 				System.out.println("Debut du combat");
 				CustomPopup.showPopup("Combat", "Combat", "Vous allez combattre un pokemon. \n"
-																			+ "Le bouton ATTAQUE permet d'attaquer le pokemon avec " + this.player.getAtk() + " de points d'attaque\n"
+																			+ "Le bouton ATTAQUE permet d'attaquer le pokemon " + this.biome.getTile(x, y).getPokemon().getName() + " avec " + this.player.getAtk() + " de points d'attaque\n"
+																			+ "Ce pokemon a " + this.biome.getTile(x, y).getPokemon().getHpMax() + "d'HP\n"
+																			+ "et fait des degats de " + this.biome.getTile(x, y).getPokemon().getAtk() + " points."
+																			+ "Vous avez " + this.player.getHp() + "d'HP actuellement.\n"
 																			+ "Le menu déroulant au milieu permet de sélectionner un item utilisable en \nduel de l'inventaire du joueur,\n"
 																			+ "Le bouton UTILISER permet d'utiliser cet item. \n"
 																			+ "Vous pouvez voir votre HP et celui du pokemon durant le combat.\n"
