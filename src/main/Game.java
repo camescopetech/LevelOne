@@ -564,6 +564,7 @@ public class Game {
 	public void clickInventory(Item item) {
 		System.out.println(item.getName());
 		if(item.isUseableInBiome()){
+			CustomPopup.showPopup("C'est quoi cet objet?", item.getName(), item.getDescription());
 			if (item.getnUseRemain() > 1){
 				useObjectInventory(item.getName());
 			} else if (item.getnUseRemain() == 1){

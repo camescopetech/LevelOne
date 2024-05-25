@@ -22,6 +22,7 @@ public class Item {
 	private boolean isUseableInBiome;
 	private boolean isSellable;
 	private double price;
+	private String description;
 
 
 	/**
@@ -33,7 +34,7 @@ public class Item {
 	 * @param isUsableInDuel whether the item is usable in duels
 	 * @param isUsableInBiome whether the item is usable in biomes
 	 */
-	public Item(int id, String name, String spritePath, boolean isUsableInDuel, boolean isUsableInBiome, boolean isSellable, double price) {
+	public Item(int id, String name, String spritePath, boolean isUsableInDuel, boolean isUsableInBiome, boolean isSellable, double price, String description) {
 		super();
 		this.id = id;
 		this.sprite = new ImageView(new Image(spritePath));
@@ -45,6 +46,7 @@ public class Item {
 		this.isUseableInBiome = isUsableInBiome;
 		this.isSellable = isSellable;
 		this.price = price;
+		this.description = description;
 
 		this.isLimited = false;
 		this.nUseRemain = 1;
@@ -60,7 +62,7 @@ public class Item {
 	 * @param nUse the number of uses remaining
 	 * @param isUseableInBiome whether the item is usable in biomes
 	 */
-	public Item(int id, String name, String spritePath, boolean isUsableInDuel, int nUse, boolean isUseableInBiome, boolean isSellable, double price) {
+	public Item(int id, String name, String spritePath, boolean isUsableInDuel, int nUse, boolean isUseableInBiome, boolean isSellable, double price, String description) {
 		super();
 		this.id = id;
 		this.sprite = new ImageView(new Image(spritePath));
@@ -72,6 +74,7 @@ public class Item {
 		this.isUseableInBiome = isUseableInBiome;
 		this.isSellable = isSellable;
 		this.price = price;
+		this.description = description;
 
 		this.isLimited = true;
 		this.nUseRemain = nUse;
@@ -88,7 +91,7 @@ public class Item {
 	 * @param nUse the number of uses remaining
 	 * @param isUseableInBiome whether the item is usable in biomes
 	 */
-	public Item(int id, String name, String spritePath, boolean isUsableInDuel, boolean isLimited, int nUse, boolean isUseableInBiome, boolean isSellable, double price) {
+	public Item(int id, String name, String spritePath, boolean isUsableInDuel, boolean isLimited, int nUse, boolean isUseableInBiome, boolean isSellable, double price, String description) {
 		super();
 		this.id = id;
 		this.sprite = new ImageView(new Image(spritePath));
@@ -100,6 +103,7 @@ public class Item {
 		this.isUseableInBiome = isUseableInBiome;
 		this.isSellable = isSellable;
 		this.price = price;
+		this.description = description;
 
 		this.isLimited = isLimited;
 		this.nUseRemain = nUse;
@@ -265,12 +269,20 @@ public class Item {
 		this.price = price;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	/**
 	 * Creates a deep copy of the item.
 	 *
 	 * @return a new Item instance that is a deep copy of the current item
 	 */
 	public Item deepCopy() {
-		return new Item(this.id, new String(this.name), new String(this.spritePath), this.isUseableInDuel, this.isLimited, this.nUseRemain, this.isUseableInBiome, this.isSellable, this.price);
+		return new Item(this.id, new String(this.name), new String(this.spritePath), this.isUseableInDuel, this.isLimited, this.nUseRemain, this.isUseableInBiome, this.isSellable, this.price, this.description);
 	}
 }
