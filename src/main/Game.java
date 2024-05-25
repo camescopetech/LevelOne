@@ -28,6 +28,7 @@ public class Game {
 	private Scene inventoryScene;
 	private Scene duelScene;
 	private Scene venteScene;
+	private Scene objetScene;
 	private Biome biome;
 	private Player player;
 	private Stage primaryStage;
@@ -88,6 +89,14 @@ public class Game {
 		this.venteScene.setOnKeyPressed(e -> {
 			if (e.getCode().equals(Constantes.KEY_INVENTORY)) {
 				System.out.println("vente");
+			}
+		});
+
+		Label objetLabel = new Label("");
+		this.objetScene = new Scene(objetLabel, Constantes.STAGE_HEIGHT, Constantes.STAGE_WIDTH);
+		this.venteScene.setOnKeyPressed(e -> {
+			if (e.getCode().equals(Constantes.KEY_INVENTORY)) {
+				System.out.println("objet");
 			}
 		});
         
@@ -342,6 +351,17 @@ public class Game {
 			this.primaryStage.setScene(this.mapScene);
 		}
 	}
+
+	public void endObjet(Objet objet) {
+		if (objet.getClose()) {
+			this.inventoryScene.setRoot(this.loadInventory());
+			this.primaryStage.setScene(this.inventoryScene);
+		}
+	}
+
+	public void useObjet(Item item) {
+		clickInventory(item);
+	}
 	public void endDuel(Duel duel, int x, int y) {
 		if (duel.getIsClose()) {
             System.out.println("Fin du combat");
@@ -553,8 +573,22 @@ public class Game {
 
             		 gridPane.add(vBox, j, i);
 
-					 img.setOnMouseClicked(e -> {clickInventory(item);});
-					 str.setOnMouseClicked(e -> { clickInventory(item);});
+					 img.setOnMouseClicked(e -> {
+						 Objet objet = new Objet(this.primaryStage, item, this.player);
+						 objet.setCloseChangeListener(close -> {
+							 if (close) {
+								 this.endObjet(objet);
+							 }
+						 });
+						 objet.setUseChangeListener(use -> {
+							 if(use){
+								 clickInventory(item);
+								 this.objetScene.setRoot(objet.loadObjet());
+								 this.primaryStage.setScene(objet.loadObjet().getScene());
+							 }
+						 });
+					 });
+
             	 }
             }
          }
@@ -564,7 +598,6 @@ public class Game {
 	public void clickInventory(Item item) {
 		System.out.println(item.getName());
 		if(item.isUseableInBiome()){
-			CustomPopup.showPopup("C'est quoi cet objet?", item.getName(), item.getDescription());
 			if (item.getnUseRemain() > 1){
 				useObjectInventory(item.getName());
 			} else if (item.getnUseRemain() == 1){
@@ -582,15 +615,19 @@ public class Game {
 			endGameOver();
 		} else if (Objects.equals(itemName, Constantes.ITEM_BOMB_10.getName())) {
 			replaceTilesAroundPlayer(3, 30);
+			this.player.useObject(itemName);
 		} else if (Objects.equals(itemName, Constantes.ITEM_TELEPORTATION.getName())){
 			teleportsPlayer();
+			this.player.useObject(itemName);
 		} else if (Objects.equals(itemName, Constantes.ITEM_MALUS_50.getName())) {
 			double currentAtk = this.player.getAtk();
 			this.player.setAtk(currentAtk*0.5);
+			this.player.useObject(itemName);
 		} else if (Objects.equals(itemName, Constantes.ITEM_COIN_10.getName())) {
 			double currentMoney = this.player.getMoney();
 			this.player.setMoney(currentMoney+10);
 			this.mapScene.setRoot(this.loadBiome());
+			this.player.useObject(itemName);
 		}
 	}
 
@@ -615,6 +652,10 @@ public class Game {
 			System.out.println(this.biome);
 			this.player.setPosX(x);
 			this.player.setPosY(y);
+			this.mapScene.setRoot(this.loadBiome());
+			this.primaryStage.setScene(mapScene);
+		} else if (this.biome.getTile(x,y).getBloc().getId() != Constantes.BLOC_WATER.getId()){
+			endGameOver();
 			this.mapScene.setRoot(this.loadBiome());
 			this.primaryStage.setScene(mapScene);
 		} else {
