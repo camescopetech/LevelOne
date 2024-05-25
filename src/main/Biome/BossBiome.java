@@ -47,7 +47,7 @@ public class BossBiome extends Biome {
 		this.getTile(2, 8).setBloc(Constantes.BLOC_WATER.deepCopy());
 
 		// Papi
-		String[] dialog = { "A l'aide ... Bat le dracofeu" };
+		String[] dialog = { "A l'aide ... Bat le dracofeu, il ne nous laissera pas partir..." };
 		this.getTile(7, 3).setPnj(new Pnj("main/img/vieux.png", dialog, "vieux", 0));
 
 		// Boss

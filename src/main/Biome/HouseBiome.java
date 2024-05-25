@@ -42,7 +42,7 @@ public class HouseBiome extends Biome {
 		this.getTile(5, 0).setTpTile(0, 11, 6);
 
 		// PNJ
-		String[] dialog = { "S'il te plait, aide mon ami bloqu� dans la grotte" };
+		String[] dialog = { "Aide mon ami bloque dans la grotte... \nTu peux y acceder en sortant de la maison peut etre.." };
 		this.getTile(1, 2).setPnj(new Pnj("main/img/vieux.png", dialog, "vieux", 0));
 
 		String[] dialogNew = { "Bonne journee" };

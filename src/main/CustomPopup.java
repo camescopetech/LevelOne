@@ -36,7 +36,7 @@ public class CustomPopup {
         layout.setAlignment(Pos.CENTER);
 
         // Créer la scène et l'ajouter à la fenêtre
-        Scene scene = new Scene(layout, 300, 200);
+        Scene scene = new Scene(layout, 500, 300);
         popupWindow.setScene(scene);
 
         // Afficher la fenêtre et attendre qu'elle soit fermée avant de retourner à la fenêtre principale

@@ -94,7 +94,14 @@ public class Game {
         //Controle Scene
         Label control = new Label();
         control.setAlignment(Pos.CENTER);
-        control.setText(" Fleche haut, bas, droite et gauche pour se deplacer.\n F pour interagir avec les items et les PNJ.\n I pour l'inventaire.\n Appuyer sur F pour commencer a jouer");
+        control.setText("Vous allez combattre des pokemons! \n"
+				+ "Parlez aux vieillards dans les différents monde pour connaître votre quête. \n"
+				+ "Explorez les mondes pour récupérer des items et vous battre avec les pokemons,\n"
+				+ "Peut être auront-ils les items nécessaires pour avancer si vous les battez !\n"
+				+ "Vous pouvez voir votre HP vos coins en haut à droite.\n"
+				+ "Bon jeu ! \n" + " \n"
+				+ "Les commandes : \n"
+				+ "Fleche haut, bas, droite et gauche pour se deplacer.\nF pour interagir avec les items et les PNJ.\nI pour l'inventaire.\nAppuyer sur F pour commencer a jouer");
         
         Scene controlScene = new Scene(control, Constantes.STAGE_HEIGHT , Constantes.STAGE_WIDTH);
         controlScene.setOnKeyPressed(e -> {
@@ -236,9 +243,12 @@ public class Game {
 				//int nLine = this.biome.getTile(x, y).getPnj().getDialog().length;
 				//int i = 0;
 				if(this.biome.getTile(x, y).getPnj().getName().equals("voleur")){
+					CustomPopup.showPopup("Voleur", "Voleur",
+							"Si votre inventaire est vide le voleur vous souhaite 'Bonne journee' \n"
+									+ "Sinon il vole un objet de votre inventaire au hasard. \n");
 					if(this.player.getInventory().isEmpty()){
 						System.out.println(this.player.getInventory().size());
-						this.loadTextBox(this.biome.getTile(x, y).getPnj().getDialog()[0]);
+						this.loadTextBox("Bonne journee!");
 					} else {
 						int ran = getRandomNumber(0, this.player.getInventory().size());
 						this.player.getInventory().remove(ran);
@@ -246,7 +256,8 @@ public class Game {
 					}
 				} else if(this.biome.getTile(x, y).getPnj().getName().equals("Marchand")){
 					System.out.println("Debut vente");
-					CustomPopup.showPopup("Vente", "Vente", "Vous pouvez vendre et acheter \n" + "des objets avec le marchand ici !");
+					CustomPopup.showPopup("Vente", "Vente", "Vous pouvez vendre et acheter \n"
+																		+ "des objets avec le marchand ici !");
 
 					final int xf = x;
 					final int yf = y;
@@ -258,6 +269,8 @@ public class Game {
 						}
 					});
 				} else if (this.biome.getTile(x, y).getPnj().getName().equals("swap")){
+					CustomPopup.showPopup("Swap", "Swap", "Il vous echange l'item 10 coins \n"
+																		+ this.biome.getTile(x, y).getPnj().getInventoryElement(0).getName());
 					if(!this.biome.getTile(x, y).getPnj().getInventory().isEmpty()) {
 						if (this.player.inventoryContainsItem(Constantes.ITEM_COIN_10.getId())){
 							this.loadTextBox("J'ai echange ton item 10 coins contre " + this.biome.getTile(x, y).getPnj().getInventoryElement(0).getName());
@@ -275,19 +288,20 @@ public class Game {
 					}
 				}
 				else {
+					CustomPopup.showPopup("Vieillard", "Vieillard", "Parlez avec le vieillard pour connaitre votre quete.");
 					this.loadTextBox(this.biome.getTile(x, y).getPnj().getDialog()[0]);
-
-					if(!this.biome.getTile(x, y).getPnj().getInventory().isEmpty()) {
-						System.out.println("donne " + this.biome.getTile(x, y).getPnj().getInventoryElement(0).getName());
-						this.player.getInventory().add(this.biome.getTile(x, y).getPnj().getInventoryElement(0).deepCopy());
-						this.biome.getTile(x, y).getPnj().getInventory().remove(0);
-					}
 				}
 
 			}
 			else if(this.biome.getTile(x, y).getPokemon() != null) {
-				System.out.println("Debut du combat");		
-				
+				System.out.println("Debut du combat");
+				CustomPopup.showPopup("Combat", "Combat", "Vous allez combattre un pokemon. \n"
+																			+ "Le bouton ATTAQUE permet d'attaquer le pokemon avec " + this.player.getAtk() + " de points d'attaque\n"
+																			+ "Le menu déroulant au milieu permet de sélectionner un item utilisable en \nduel de l'inventaire du joueur,\n"
+																			+ "Le bouton UTILISER permet d'utiliser cet item. \n"
+																			+ "Vous pouvez voir votre HP et celui du pokemon durant le combat.\n"
+																			+ "Bon combat !");
+
 				final int xf = x;
 				final int yf = y;
 				
@@ -486,12 +500,12 @@ public class Game {
         textBox.setY(rectangleHeight * 4);
      
         Text text = new Text(line);
-        text.setFont(Font.font("Arial", 20));
+        text.setFont(Font.font("Arial", 15));
         text.setFill(Color.BLACK);
         text.setY(Constantes.STAGE_HEIGHT*4/5);
         
         text.setLayoutX((rectangleWidth - text.getBoundsInLocal().getWidth()) / 2);
-        text.setLayoutY((rectangleHeight - text.getBoundsInLocal().getHeight()) / 2 + text.getBoundsInLocal().getHeight());
+        text.setLayoutY((rectangleHeight - text.getBoundsInLocal().getHeight()) / 2 );
         
 		Pane root = new Pane();
         root.getChildren().addAll(this.loadBiome(),textBox,text); // Ajouter le GridPane et le rectangle
