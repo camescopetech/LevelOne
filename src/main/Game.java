@@ -598,20 +598,17 @@ public class Game {
 		}
 		int x = getRandomNumber(0, Constantes.NUMBER_OF_COL);
 		int y = getRandomNumber(0, Constantes.NUMBER_OF_ROW);
-		if (this.biome.getTile(x,y).getBloc().getId() != Constantes.BLOC_TREE_SOLID.getId()
-				&& this.biome.getTile(x,y).getBloc().getId() != Constantes.BLOC_NETHER.getId()
-				&& this.biome.getTile(x,y).getBloc().getId() != Constantes.BLOC_HOUSE.getId()
-				&& this.biome.getTile(x,y).getBloc().getId() != Constantes.BLOC_DOOR.getId()
-				&& this.biome.getTile(x,y).getBloc().getId() != Constantes.BLOC_GATE.getId()) {
+		if (!this.biome.getTile(x,y).getBloc().isSolid()) {
 			System.out.println(this.biome);
 			this.player.setPosX(x);
 			this.player.setPosY(y);
 			this.mapScene.setRoot(this.loadBiome());
+			this.primaryStage.setScene(mapScene);
 		} else {
 			Alert alert = new Alert(Alert.AlertType.WARNING);
 			alert.setTitle("Téléportation impossible");
 			alert.setHeaderText(null);
-			alert.setContentText("Teleportation impossinle");
+			alert.setContentText("Teleportation impossible.. \nVous etiez arrive sur un element solide");
 			alert.showAndWait();
 		}
 	}
