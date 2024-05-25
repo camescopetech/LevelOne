@@ -1,11 +1,14 @@
 package main;
 
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -101,15 +104,36 @@ public class Objet {
 
         useBtn.setDisable(!this.item.isUseableInBiome());
         useBtn.setOnAction(event -> {
-            handleUseBtn();
-            this.scene.setRoot(this.loadObjet());
-            this.primaryStage.setScene(this.scene);
+            if (this.item.getName().equals(Constantes.ITEM_OVER.getName())) {
+                handleUseBtn();
+                this.primaryStage.setScene(endGameOver());
+            } else {
+                handleUseBtn();
+                this.scene.setRoot(this.loadObjet());
+                this.primaryStage.setScene(this.scene);
+            }
         });
 
         // Ajouter les éléments au VBox
         vBox.getChildren().addAll(img, nameLabel, descriptionLabel, nUseLabel, priceLabel, closeBtn, useBtn);
 
         return vBox;
+    }
+
+    public Scene endGameOver() {
+
+        Label gameOverLabel = new Label("Game Over");
+        gameOverLabel.setFont(new Font("Arial", 40));
+        gameOverLabel.setTextFill(Color.RED);
+        gameOverLabel.setAlignment(Pos.CENTER);
+
+        Pane root = new Pane(gameOverLabel);
+        gameOverLabel.setLayoutX((Constantes.STAGE_WIDTH - gameOverLabel.getWidth()) / 2);
+        gameOverLabel.setLayoutY((Constantes.STAGE_HEIGHT - gameOverLabel.getHeight()) / 2);
+
+        Scene sceneOver = new Scene(root, Constantes.STAGE_WIDTH, Constantes.STAGE_HEIGHT);
+
+        return sceneOver;
     }
 
 }

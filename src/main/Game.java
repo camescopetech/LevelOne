@@ -500,7 +500,7 @@ public class Game {
 			if(endGameStatut  == Constantes.WIN_DRACO) {
 				l.setText("Victoire: Vous avez battu dracofeu et sauv� Papi.");
 			} else if (endGameStatut == Constantes.GAME_OVER) {
-				endGameOver();
+				this.primaryStage.setScene(endGameOver());
 			} else if (endGameStatut == Constantes.GAME_WIN) {
 				endGameWin();
 			}
@@ -586,10 +586,9 @@ public class Game {
 						 objet.setUseChangeListener(use -> {
 							 if(use){
 								 clickInventory(item);
-								 this.objetScene.setRoot(objet.loadObjet());
-								 this.primaryStage.setScene(objet.loadObjet().getScene());
 							 }
 						 });
+
 					 });
 
             	 }
@@ -614,8 +613,6 @@ public class Game {
 	public void useObjectInventory(String itemName){
 		if (Objects.equals(itemName, Constantes.ITEM_POTION.getName())){
 			this.player.useObject(itemName);
-		} else if (Objects.equals(itemName, Constantes.ITEM_OVER.getName())) {
-			endGameOver();
 		} else if (Objects.equals(itemName, Constantes.ITEM_BOMB_10.getName())) {
 			replaceTilesAroundPlayer(3, 30);
 			this.player.useObject(itemName);
@@ -632,6 +629,7 @@ public class Game {
 			this.mapScene.setRoot(this.loadBiome());
 			this.player.useObject(itemName);
 		}
+		this.primaryStage.setScene(objetScene);
 	}
 
 	private void teleportsPlayer(){
@@ -658,7 +656,7 @@ public class Game {
 			this.mapScene.setRoot(this.loadBiome());
 			this.primaryStage.setScene(mapScene);
 		} else if (this.biome.getTile(x,y).getBloc().getId() != Constantes.BLOC_WATER.getId()){
-			endGameOver();
+			this.primaryStage.setScene(endGameOver());
 			this.mapScene.setRoot(this.loadBiome());
 			this.primaryStage.setScene(mapScene);
 		} else {
@@ -760,7 +758,7 @@ public class Game {
 		return false;
 	}
 
-	public void endGameOver() {
+	public Scene endGameOver() {
 
 		Label gameOverLabel = new Label("Game Over");
 		gameOverLabel.setFont(new Font("Arial", 40));
@@ -771,7 +769,9 @@ public class Game {
 		gameOverLabel.setLayoutX((Constantes.STAGE_WIDTH - gameOverLabel.getWidth()) / 2);
 		gameOverLabel.setLayoutY((Constantes.STAGE_HEIGHT - gameOverLabel.getHeight()) / 2);
 
-		this.primaryStage.setScene(new Scene(root, Constantes.STAGE_WIDTH, Constantes.STAGE_HEIGHT));
+		Scene sceneOver = new Scene(root, Constantes.STAGE_WIDTH, Constantes.STAGE_HEIGHT);
+
+		return sceneOver;
 	}
 
 	public void endGameWin() {
