@@ -269,17 +269,17 @@ public class Game {
 						}
 					});
 				} else if (this.biome.getTile(x, y).getPnj().getName().equals("swap")){
-					CustomPopup.showPopup("Swap", "Swap", "Il vous echange l'item 10 coins \n"
+					CustomPopup.showPopup("Swap", "Swap", "Il vous echange l'item swimmer \n"
 																		+ this.biome.getTile(x, y).getPnj().getInventoryElement(0).getName());
 					if(!this.biome.getTile(x, y).getPnj().getInventory().isEmpty()) {
-						if (this.player.inventoryContainsItem(Constantes.ITEM_COIN_10.getId())){
-							this.loadTextBox("J'ai echange ton item 10 coins contre " + this.biome.getTile(x, y).getPnj().getInventoryElement(0).getName());
+						if (this.player.inventoryContainsItem(Constantes.ITEM_SWIM.getId())){
+							this.loadTextBox("J'ai echange ton item swimmer contre " + this.biome.getTile(x, y).getPnj().getInventoryElement(0).getName());
 							this.player.getInventory().add(this.biome.getTile(x, y).getPnj().getInventoryElement(0));
 							this.biome.getTile(x, y).getPnj().getInventory().remove(this.biome.getTile(x, y).getPnj().getInventoryElement(0));
-							this.player.getInventory().remove(Constantes.ITEM_COIN_10);
-							this.biome.getTile(x, y).getPnj().getInventory().add(Constantes.ITEM_COIN_10);
+							this.player.getInventory().remove(Constantes.ITEM_SWIM);
+							this.biome.getTile(x, y).getPnj().getInventory().add(Constantes.ITEM_SWIM);
 
-						} else if (this.biome.getTile(x, y).getPnj().inventoryContainsItem(Constantes.ITEM_COIN_10.getId())){
+						} else if (this.biome.getTile(x, y).getPnj().inventoryContainsItem(Constantes.ITEM_SWIM.getId())){
 							this.loadTextBox("Tu n'as pas l'objet que je veux");
 						}
 

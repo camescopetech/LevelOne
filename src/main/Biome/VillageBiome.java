@@ -132,7 +132,7 @@ public class VillageBiome extends Biome {
 		// Pokemon
 		this.getTile(4, 16).setPokemon(new Pokemon("main/img/pikachu.png", "Pikachu", 0, 30, 10, "main/img/pikachu.png"));
 		this.getTile(4, 16).getPokemon().setReward(Constantes.ITEM_KGATE.deepCopy());
-		Item[] listReward = {Constantes.ITEM_KGATE.deepCopy(), Constantes.ITEM_COIN_10.deepCopy()};
+		Item[] listReward = {Constantes.ITEM_KGATE.deepCopy()};
 		this.getTile(4, 16).getPokemon().setListReward(List.of(listReward));
 
 		this.getTile(6, 7).setPokemon(new Pokemon("main/img/magneton.png", "M", 0, 10, 10, "main/img/magneton.png"));
