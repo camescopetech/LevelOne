@@ -1,5 +1,7 @@
 package main;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -250,7 +252,28 @@ public class Vente {
         Label inventoryPNJ = new Label("Inventaire du PNJ");
         VBox vBoxPnj = new VBox();
         this.loadItemBoxPnj();
-        vBoxPnj.getChildren().addAll(inventoryPNJ, this.itemsBoxPnj);
+        Label itemCoins = new Label("");
+        this.itemsBoxPnj.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                // Trouver l'Item correspondant dans la liste d'inventaire basé sur le nom
+                Item selected = null;
+                for (Item item : pnj.getInventory()) {
+                    if (item.getName().equals(newValue)) {
+                        selected = item;
+                        break;
+                    }
+                }
+                // Vérifier si l'Item a été trouvé
+                if (selected != null) {
+                    // Afficher le prix de l'item dans la console
+                    System.out.println("Prix de l'item sélectionné (" + selected.getName() + ") : " + selected.getPrice());
+                    itemCoins.setText("Prix de l'item sélectionné : " + selected.getPrice() + " coins");
+                }
+            }
+        });
+
+        vBoxPnj.getChildren().addAll(inventoryPNJ, this.itemsBoxPnj, itemCoins);
         gridPane.add(vBoxPnj, 0, 0);
 
         // Money Player
@@ -258,7 +281,27 @@ public class Vente {
         Label inventoryPlayer = new Label("Inventaire du joueur");
         VBox vBoxPlayer = new VBox();
         this.loadItemBoxPlayer();
-        vBoxPlayer.getChildren().addAll(moneyPlayer, inventoryPlayer, this.itemsBoxPlayer);
+        Label itemCoinsPlayer = new Label("");
+        this.itemsBoxPlayer.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                // Trouver l'Item correspondant dans la liste d'inventaire basé sur le nom
+                Item selected = null;
+                for (Item item : player.getInventory()) {
+                    if (item.getName().equals(newValue)) {
+                        selected = item;
+                        break;
+                    }
+                }
+                // Vérifier si l'Item a été trouvé
+                if (selected != null) {
+                    // Afficher le prix de l'item dans la console
+                    System.out.println("Prix de l'item sélectionné (" + selected.getName() + ") : " + selected.getPrice());
+                    itemCoinsPlayer.setText("Prix de l'item sélectionné : " + selected.getPrice() + " coins");
+                }
+            }
+        });
+        vBoxPlayer.getChildren().addAll(moneyPlayer, inventoryPlayer, this.itemsBoxPlayer, itemCoinsPlayer);
 
         gridPane.add(vBoxPlayer, 1, 1);
 
