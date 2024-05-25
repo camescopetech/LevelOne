@@ -518,8 +518,17 @@ public class Game {
         for (int i = 0; i < Constantes.NUMBER_OF_ROW; i++) {
              for (int j = 0; j < Constantes.NUMBER_OF_COL; j++) {
 
+				 int currentIndex = i * Constantes.NUMBER_OF_COL + j;
             	 Rectangle border = new Rectangle(Constantes.CASE_HEIGHT, Constantes.CASE_WIDTH);
-                 border.setFill(null);
+
+				 if (currentIndex < this.player.getMaxInventorySize()) {
+					 // Si la case est accessible, elle est transparente
+					 border.setFill(null);
+				 } else {
+					 // Si la case est inaccessible, elle est noire
+					 border.setFill(Color.BLACK);
+				 }
+
                  border.setStroke(Color.BLACK);
                  border.setStrokeWidth(1);
                  gridPane.add(border, j, i);
@@ -544,22 +553,25 @@ public class Game {
 
             		 gridPane.add(vBox, j, i);
 
-					 img.setOnMouseClicked(e -> {
-						 System.out.println(item.getName());
-						 if(item.isUseableInBiome()){
-							 if (item.getnUseRemain() > 1){
-								 useObjectInventory(item.getName());
-							 } else if (item.getnUseRemain() == 1){
-								 useObjectInventory(item.getName());
-								 this.player.getInventory().remove(item);
-							 }
-							 this.inventoryScene.setRoot(this.loadInventory());
-						 }
-					 });
+					 img.setOnMouseClicked(e -> {clickInventory(item);});
+					 str.setOnMouseClicked(e -> { clickInventory(item);});
             	 }
             }
          }
         return gridPane;
+	}
+
+	public void clickInventory(Item item) {
+		System.out.println(item.getName());
+		if(item.isUseableInBiome()){
+			if (item.getnUseRemain() > 1){
+				useObjectInventory(item.getName());
+			} else if (item.getnUseRemain() == 1){
+				useObjectInventory(item.getName());
+				this.player.getInventory().remove(item);
+			}
+			this.inventoryScene.setRoot(this.loadInventory());
+		}
 	}
 
 	public void useObjectInventory(String itemName){
