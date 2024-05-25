@@ -91,7 +91,7 @@ Pokemon are here to fight with you ! They can be found all around the worlds. To
 Pikachu inflicts 10 of damage when it's his turn and has 30 of HP. <img src="src/main/img/pikachu2.png" alt="key.png" width="31" height="31"> 
 
 ### M
-Pikachu2 inflicts 10 of damage and has a 10 of HP. <img src="src/main/img/magneton.png" alt="key.png" width="31" height="31">
+Pikachu2 inflicts 10 of damage and has a 10 of HP. <img src="src/main/img/m.png" alt="key.png" width="31" height="31">
 
 When all Pikachu 2 are killed in all the worlds an item appears at the place of the last Pikachu2 killed. 
 
