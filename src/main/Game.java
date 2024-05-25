@@ -240,10 +240,11 @@ public class Game {
 					} else {
 						int ran = getRandomNumber(0, this.player.getInventory().size());
 						this.player.getInventory().remove(ran);
-						this.loadTextBox("Je t'ai vole un objet au hasard");
+						this.loadTextBox("Je t'ai vole un objet au hasard !");
 					}
 				} else if(this.biome.getTile(x, y).getPnj().getName().equals("Marchand")){
 					System.out.println("Debut vente");
+					CustomPopup.showPopup("Vente", "Vente", "Vous pouvez vendre et acheter \n" + "des objets avec le marchand ici !");
 
 					final int xf = x;
 					final int yf = y;
@@ -254,6 +255,22 @@ public class Game {
 							this.endVente(vente, xf, yf);
 						}
 					});
+				} else if (this.biome.getTile(x, y).getPnj().getName().equals("swap")){
+					if(!this.biome.getTile(x, y).getPnj().getInventory().isEmpty()) {
+						if (this.player.inventoryContainsItem(Constantes.ITEM_COIN_10.getId())){
+							this.loadTextBox("J'ai echange ton item 10 coins contre " + this.biome.getTile(x, y).getPnj().getInventoryElement(0).getName());
+							this.player.getInventory().add(this.biome.getTile(x, y).getPnj().getInventoryElement(0));
+							this.biome.getTile(x, y).getPnj().getInventory().remove(this.biome.getTile(x, y).getPnj().getInventoryElement(0));
+							this.player.getInventory().remove(Constantes.ITEM_COIN_10);
+							this.biome.getTile(x, y).getPnj().getInventory().add(Constantes.ITEM_COIN_10);
+
+						} else if (this.biome.getTile(x, y).getPnj().inventoryContainsItem(Constantes.ITEM_COIN_10.getId())){
+							this.loadTextBox("Tu n'as pas l'objet que je veux");
+						}
+
+					} else {
+						this.loadTextBox("Je n'ai rien a echanger");
+					}
 				}
 				else {
 					this.loadTextBox(this.biome.getTile(x, y).getPnj().getDialog()[0]);

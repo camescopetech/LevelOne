@@ -55,7 +55,6 @@ public class Constantes {
 	public final static Item ITEM_MALUS_50 = new Item(9, "malus50", "main/img/malus.png", true, 1, false, true, 60);
 	public final static Item ITEM_COIN_10 = new Item(10, "10coins", "main/img/10coins.png", false, 1, true, true, 10);
 
-
 	//main.Biome
 	public final static Biome BIOME_VILLAGE = new VillageBiome();
 	public final static Biome BIOME_BOSS = new BossBiome();

@@ -33,7 +33,7 @@ public class Player extends FightingEntity {
 	 */
 	public Player() {
 		super("main/img/player_south.png", "Sacha", 50, 10, 50, 20, "main/img/duel_player.png");
-
+		this.getInventory().add(Constantes.ITEM_COIN_10);
 	}
 
 	//GetSet

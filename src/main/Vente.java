@@ -247,16 +247,18 @@ public class Vente {
         gridPane.add(imgPlayer, 0, 1);
 
         // Money PNJ
+        Label inventoryPNJ = new Label("Inventaire du PNJ");
         VBox vBoxPnj = new VBox();
         this.loadItemBoxPnj();
-        vBoxPnj.getChildren().addAll(this.itemsBoxPnj);
+        vBoxPnj.getChildren().addAll(inventoryPNJ, this.itemsBoxPnj);
         gridPane.add(vBoxPnj, 0, 0);
 
         // Money Player
         Label moneyPlayer = new Label(this.player.getMoney() + " coins ");
+        Label inventoryPlayer = new Label("Inventaire du joueur");
         VBox vBoxPlayer = new VBox();
         this.loadItemBoxPlayer();
-        vBoxPlayer.getChildren().addAll(moneyPlayer, this.itemsBoxPlayer);
+        vBoxPlayer.getChildren().addAll(moneyPlayer, inventoryPlayer, this.itemsBoxPlayer);
 
         gridPane.add(vBoxPlayer, 1, 1);
 

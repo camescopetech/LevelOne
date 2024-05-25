@@ -125,6 +125,10 @@ public class VillageBiome extends Biome {
 		this.getTile(5, 5).setPnj(new Pnj("main/img/vieux.png", dialog, "vieux", 0));
 		this.getTile(5, 5).getPnj().getInventory().add(Constantes.ITEM_POKEBALL.deepCopy());
 
+		String[] dialogSwap = { "Je veux bien t'echanger un item 10 coins contre " };
+		this.getTile(7,9).setPnj(new Pnj("main/img/swap.png", dialogSwap, "swap", 0));
+		this.getTile(7, 9).getPnj().getInventory().add(Constantes.ITEM_X.deepCopy());
+
 		// Pokemon
 		this.getTile(4, 16).setPokemon(new Pokemon("main/img/pikachu2.png", "Pikachu", 0, 30, 10, "main/img/pikachu.png"));
 		this.getTile(4, 16).getPokemon().setReward(Constantes.ITEM_KGATE.deepCopy());
