@@ -1,6 +1,6 @@
 # LvlOne
 
-LvlOne is a game lossely based on Pokemon. You can fight Pokemon, interact with PNJ and have items. 
+LvlOne is a game loosely based on Pokemon. You can fight Pokemon, interact with PNJ and have items. 
 
 # How to launch
 ```java --module-path "{PATH_TO_YOUR_JAVAFX_LIB}" --add-modules javafx.controls,javafx.fxml -jar LvlOne.jar```
