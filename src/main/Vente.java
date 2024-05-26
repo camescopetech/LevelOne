@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Represents a duel between a player and a Pokémon.
+ * Represents a selling interaction between a player and a PNJ (non-player character).
  */
 public class Vente {
     //VAR
@@ -44,9 +44,8 @@ public class Vente {
 
     private Button btnUse;
 
-
     /**
-     * Constructs a Vente with the specified stage, player, Pokémon, and duel coordinates.
+     * Constructs a Vente with the specified stage, player, and PNJ.
      *
      * @param primaryStage the primary stage for displaying the sell
      * @param player the player participating in the selling
@@ -71,36 +70,36 @@ public class Vente {
     // Getters and Setters
 
     /**
-     * Gets the Pokémon the player is dueling against.
+     * Gets the PNJ the player is selling with.
      *
-     * @return the Pokémon
+     * @return the PNJ
      */
     public Pnj getPnj() {
         return this.pnj;
     }
 
     /**
-     * Sets the Pokémon the player is dueling against.
+     * Sets the PNJ the player is selling with.
      *
-     * @param pnj the Pokémon
+     * @param pnj the PNJ
      */
     public void setPnj(Pnj pnj) {
         this.pnj = pnj;
     }
 
     /**
-     * Checks if the duel is closed.
+     * Checks if the sale interaction is closed.
      *
-     * @return true if the duel is closed, false otherwise
+     * @return true if the sale interaction is closed, false otherwise
      */
     public boolean getIsClose() {
         return this.isClose;
     }
 
     /**
-     * Sets whether the duel is closed.
+     * Sets whether the sale interaction is closed.
      *
-     * @param b true to close the duel, false to keep it open
+     * @param b true to close the sale interaction, false to keep it open
      */
     public void setIsClose(boolean b) {
         this.isClose = b;
@@ -118,14 +117,24 @@ public class Vente {
         this.closeChangeListener = listener;
     }
 
+    /**
+     * Checks if the sale interaction is closed.
+     *
+     * @return true if the sale interaction is closed, false otherwise
+     */
     public boolean getCloseVente() { return closeVente; }
 
+    /**
+     * Sets whether the sale interaction is closed.
+     *
+     * @param closeVente true to close the sale interaction, false to keep it open
+     */
     public void setCloseVente(boolean closeVente) { this.closeVente = closeVente; }
 
     // Methods
 
     /**
-     * Loads the item box with items usable in duels.
+     * Loads the player's item box with items that can be sold.
      */
     private void loadItemBoxPlayer() {
         ComboBox<String> comboBox = new ComboBox<>();
@@ -141,6 +150,9 @@ public class Vente {
         this.itemsBoxPlayer = comboBox;
     }
 
+    /**
+     * Loads the PNJ's item box with items that can be sold.
+     */
     private void loadItemBoxPnj() {
         ComboBox<String> comboBox = new ComboBox<>();
 
@@ -156,15 +168,18 @@ public class Vente {
     }
 
     /**
-     * Handles the use button action.
+     * Handles the close button action.
      */
     public void handleCloseBtn() {
-        this.closeVente = true;  // Mettez à jour l'état pour indiquer que la vente est fermée
+        this.closeVente = true;  // Update the state to indicate that the sale is closed
         if (closeChangeListener != null) {
-            closeChangeListener.accept(true);  // Notifier que la vente est fermée
+            closeChangeListener.accept(true);  // Notify that the sale is closed
         }
     }
 
+    /**
+     * Handles the buy button action.
+     */
     public void handleBuyBtn() {
         String selectedItemName = this.itemsBoxPnj.getValue();
         if (selectedItemName != null) {
@@ -179,7 +194,7 @@ public class Vente {
                 if (this.player.getMoney() > selectedItem.getPrice()) {
                     this.player.buyObject(selectedItem);
                     this.pnj.getInventory().remove(selectedItem);
-                    this.pnj.setMoney(this.pnj.getMoney()+selectedItem.getPrice());
+                    this.pnj.setMoney(this.pnj.getMoney() + selectedItem.getPrice());
                     System.out.println(selectedItem.getPrice() + " nouveau money player : " + this.player.getMoney());
                     this.scene.setRoot(this.loadVente());
                     this.primaryStage.setScene(this.scene);
@@ -195,6 +210,9 @@ public class Vente {
         }
     }
 
+    /**
+     * Handles the sell button action.
+     */
     public void handleSellBtn() {
         String selectedItemName = this.itemsBoxPlayer.getValue();
         if (selectedItemName != null) {
@@ -206,9 +224,9 @@ public class Vente {
                 }
             }
             if (selectedItem != null) {
-                this.player.sellObject(selectedItem);  // Effectue l'achat de l'objet
+                this.player.sellObject(selectedItem);  // Perform the sale of the item
                 this.pnj.getInventory().add(selectedItem);
-                this.pnj.setMoney(this.pnj.getMoney()-selectedItem.getPrice());
+                this.pnj.setMoney(this.pnj.getMoney() - selectedItem.getPrice());
                 System.out.println(selectedItem.getPrice() + " nouveau money player : " + this.player.getMoney());
                 this.scene.setRoot(this.loadVente());
                 this.primaryStage.setScene(this.scene);
@@ -216,11 +234,10 @@ public class Vente {
         }
     }
 
-
     /**
-     * Loads the duel UI components.
+     * Loads the sale UI components.
      *
-     * @return the grid pane containing the duel UI
+     * @return the grid pane containing the sale UI
      */
     public GridPane loadVente() {
         GridPane gridPane = new GridPane();
@@ -256,7 +273,7 @@ public class Vente {
         this.itemsBoxPnj.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                // Trouver l'Item correspondant dans la liste d'inventaire basé sur le nom
+                // Find the corresponding Item in the inventory list based on the name
                 Item selected = null;
                 for (Item item : pnj.getInventory()) {
                     if (item.getName().equals(newValue)) {
@@ -264,9 +281,9 @@ public class Vente {
                         break;
                     }
                 }
-                // Vérifier si l'Item a été trouvé
+                // Check if the Item was found
                 if (selected != null) {
-                    // Afficher le prix de l'item dans la console
+                    // Display the item's price in the console
                     System.out.println("Prix de l'item sélectionné (" + selected.getName() + ") : " + selected.getPrice());
                     itemCoins.setText("Prix de l'item sélectionné : " + selected.getPrice() + " coins");
                 }
@@ -285,7 +302,7 @@ public class Vente {
         this.itemsBoxPlayer.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                // Trouver l'Item correspondant dans la liste d'inventaire basé sur le nom
+                // Find the corresponding Item in the inventory list based on the name
                 Item selected = null;
                 for (Item item : player.getInventory()) {
                     if (item.getName().equals(newValue)) {
@@ -293,9 +310,9 @@ public class Vente {
                         break;
                     }
                 }
-                // Vérifier si l'Item a été trouvé
+                // Check if the Item was found
                 if (selected != null) {
-                    // Afficher le prix de l'item dans la console
+                    // Display the item's price in the console
                     System.out.println("Prix de l'item sélectionné (" + selected.getName() + ") : " + selected.getPrice());
                     itemCoinsPlayer.setText("Prix de l'item sélectionné : " + selected.getPrice() + " coins");
                 }

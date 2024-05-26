@@ -44,6 +44,8 @@ public class Entity {
 	 *
 	 * @param spritePath the file path of the entity's sprite
 	 * @param name       the name of the entity
+	 * @param money the entity's money
+	 * @param maxInventorySize max size of the entity's inventory
 	 */
 	public Entity(String spritePath, String name, double money, int maxInventorySize) {
 		this.sprite = new ImageView(new Image(spritePath));
@@ -143,10 +145,20 @@ public class Entity {
 		this.name = name;
 	}
 
+	/**
+	 * Returns the money of the entity.
+	 *
+	 * @return the money of the entity
+	 */
 	public double getMoney() {
 		return money;
 	}
 
+	/**
+	 * Sets the money of the entity.
+	 *
+	 * @param money the money of the entity
+	 */
 	public void setMoney(double money) {
 		this.money = money;
 	}
@@ -259,7 +271,7 @@ public class Entity {
 			Alert alert = new Alert(Alert.AlertType.WARNING);
 			alert.setTitle("Objet non présent dans l'inventaire");
 			alert.setHeaderText(null);
-			alert.setContentText("Objet non present dans l'inventaire");
+			alert.setContentText("Objet non présent dans l'inventaire");
 			alert.showAndWait();
 		}
 	}

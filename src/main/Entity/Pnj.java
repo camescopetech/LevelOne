@@ -24,6 +24,7 @@ public class Pnj extends Entity {
 	 * @param spritePath the file path of the entity's sprite
 	 * @param dialog      the array of strings (dialog) to represent the NPC's dialogue
 	 * @param name        the name of the entity
+	 * @param money the money of the pnj
 	 */
 	public Pnj(String spritePath, String[] dialog, String name, double money) {
 		super(spritePath, name, money, 10);

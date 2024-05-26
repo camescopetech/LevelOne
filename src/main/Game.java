@@ -34,6 +34,9 @@ public class Game {
 	private Stage primaryStage;
 	
 	//Cons
+	/**
+	 * Represents the main game logic, including scene transitions and player actions.
+	 */
 	public Game(Stage primaryStage) {
 		super();
 		
@@ -125,106 +128,154 @@ public class Game {
 	}
 		
 	//GetSet
+	/**
+	 * Returns the minimum row viewable in the current biome.
+	 *
+	 * @return the minimum row view as an integer.
+	 */
 	public int getMinRowView() {
 		return (int) Math.ceil(Constantes.NUMBER_OF_ROW / 2);
 	}
+
+	/**
+	 * Returns the maximum row viewable in the current biome.
+	 *
+	 * @return the maximum row view as an integer.
+	 */
 	public int getMaxRowView() {
 		return this.biome.getWidth() - this.getMinRowView() - 1;
 	}
+
+	/**
+	 * Returns the minimum column viewable in the current biome.
+	 *
+	 * @return the minimum column view as an integer.
+	 */
 	public int getMinColView() {
 		return (int) Math.ceil(Constantes.NUMBER_OF_COL / 2);
 	}
+
+	/**
+	 * Returns the maximum column viewable in the current biome.
+	 *
+	 * @return the maximum column view as an integer.
+	 */
 	public int getMaxColView() {
 		return this.biome.getHeight() - this.getMinRowView() - 1;
 	}
 
-	//Methode
+	/**
+	 * Moves the player to the spawn point in the house biome.
+	 */
 	public void goToSpawnPoint() {
 		this.biome = Constantes.BIOME_HOUSE;
 		this.player.setPosX(2);
 		this.player.setPosY(7);
 	}
+
+	/**
+	 * Moves the player based on the tile properties and updates the player's position and direction.
+	 */
 	public void playerMove() {
-		if(this.biome.getTile(this.player.getPosX(), this.player.getPosY()).isTpTile()) {
-			
+		if (this.biome.getTile(this.player.getPosX(), this.player.getPosY()).isTpTile()) {
+
 			int x = this.biome.getTile(this.player.getPosX(), this.player.getPosY()).getSpawnX();
 			int y = this.biome.getTile(this.player.getPosX(), this.player.getPosY()).getSpawnY();
-			
-			switch(this.biome.getTile(this.player.getPosX(), this.player.getPosY()).getIdTpBiome()) {
-			 case 0:
-				 this.biome = Constantes.BIOME_VILLAGE;
-				 break;
-			 case 1:
-				 this.biome = Constantes.BIOME_BOSS;
-				 break;
-			 case 2:
-				 this.biome = Constantes.BIOME_HOUSE;
-			 	 break;
-			default:
-				break;
+
+			switch (this.biome.getTile(this.player.getPosX(), this.player.getPosY()).getIdTpBiome()) {
+				case 0:
+					this.biome = Constantes.BIOME_VILLAGE;
+					break;
+				case 1:
+					this.biome = Constantes.BIOME_BOSS;
+					break;
+				case 2:
+					this.biome = Constantes.BIOME_HOUSE;
+					break;
+				default:
+					break;
 			}
-			
+
 			this.player.setPosX(x);
 			this.player.setPosY(y);
 			this.player.setDirection(Constantes.DIRECTION_SOUTH);
 		}
-		
-		
 	}
+
+	/**
+	 * Moves the player up if possible and updates the scene.
+	 */
 	public void playerMoveTop() {
 		System.out.println("Joueur monte");
-		
+
 		int x = this.player.getPosX();
 		int y = this.player.getPosY() - 1;
-		
+
 		this.player.setDirection(Constantes.DIRECTION_NORTH);
-		if(this.biome.moveIsPossible(x, y, this.player)) {
+		if (this.biome.moveIsPossible(x, y, this.player)) {
 			this.player.setPosY(y);
 			this.playerMove();
 		}
 
 		this.mapScene.setRoot(this.loadBiome());
 	}
+
+	/**
+	 * Moves the player down if possible and updates the scene.
+	 */
 	public void playerMoveBottom() {
-		System.out.println("Joueur descend"); 
-		
+		System.out.println("Joueur descend");
+
 		int x = this.player.getPosX();
 		int y = this.player.getPosY() + 1;
-		
+
 		this.player.setDirection(Constantes.DIRECTION_SOUTH);
-		if(this.biome.moveIsPossible(x, y, this.player)) {
+		if (this.biome.moveIsPossible(x, y, this.player)) {
 			this.player.setPosY(y);
 			this.playerMove();
-		}	
+		}
 		this.mapScene.setRoot(this.loadBiome());
 	}
+
+	/**
+	 * Moves the player left if possible and updates the scene.
+	 */
 	public void playerMoveLeft() {
-		System.out.println("Joueur Gauche"); 
-		
+		System.out.println("Joueur Gauche");
+
 		int x = this.player.getPosX() - 1;
 		int y = this.player.getPosY();
-		
+
 		this.player.setDirection(Constantes.DIRECTION_WEST);
-		if(this.biome.moveIsPossible(x, y, this.player)) {
+		if (this.biome.moveIsPossible(x, y, this.player)) {
 			this.player.setPosX(x);
 			this.playerMove();
 		}
 		this.mapScene.setRoot(this.loadBiome());
 	}
+
+	/**
+	 * Moves the player right if possible and updates the scene.
+	 */
 	public void playerMoveRight() {
-		System.out.println("Joueur Droit"); 
-		
+		System.out.println("Joueur Droit");
+
 		int x = this.player.getPosX() + 1;
 		int y = this.player.getPosY();
-		
+
 		this.player.setDirection(Constantes.DIRECTION_EAST);
-		if(this.biome.moveIsPossible(x, y, this.player)) {
+		if (this.biome.moveIsPossible(x, y, this.player)) {
 			this.player.setPosX(x);
 			this.playerMove();
 		}
 		this.mapScene.setRoot(this.loadBiome());
 	}
-	
+
+	/**
+	 * Handles player interaction with elements in the current biome based on the player's direction.
+	 * If the player interacts with a tile containing a NPC, Pokemon, or item, appropriate actions are taken.
+	 * Dialogs, combats, and item interactions are initiated based on the type of interaction.
+	 */
 	public void playerInteraction() {
 		int x = this.player.getPosX();
 		int y = this.player.getPosY();
@@ -348,6 +399,14 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Handles the end of a vente (sale) interface.
+	 * If the vente is closed, it resets the map scene to reflect any changes made during the sale.
+	 *
+	 * @param vente The vente instance representing the sale interface.
+	 * @param x     The x-coordinate of the tile where the sale occurred.
+	 * @param y     The y-coordinate of the tile where the sale occurred.
+	 */
 	public void endVente(Vente vente, int x, int y) {
 		if (vente.getCloseVente()) {
 			this.mapScene.setRoot(this.loadBiome());
@@ -355,6 +414,12 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Handles the end of an objet (item) interaction interface.
+	 * If the objet interaction is closed, it updates the inventory scene to reflect any changes made.
+	 *
+	 * @param objet The objet instance representing the item interaction interface.
+	 */
 	public void endObjet(Objet objet) {
 		if (objet.getClose()) {
 			this.inventoryScene.setRoot(this.loadInventory());
@@ -362,9 +427,15 @@ public class Game {
 		}
 	}
 
-	public void useObjet(Item item) {
-		clickInventory(item);
-	}
+	/**
+	 * Handles the end of a duel between the player and a Pokemon.
+	 * If the duel is closed, it resets the map scene and determines the outcome of the duel.
+	 * If the player wins, rewards are given, and the Pokemon tile is updated accordingly.
+	 *
+	 * @param duel The duel instance representing the combat interface.
+	 * @param x    The x-coordinate of the tile where the duel occurred.
+	 * @param y    The y-coordinate of the tile where the duel occurred.
+	 */
 	public void endDuel(Duel duel, int x, int y) {
 		if (duel.getIsClose()) {
             System.out.println("Fin du combat");
@@ -401,6 +472,14 @@ public class Game {
         }
 	}
 	//Load
+	/**
+	 * Loads and constructs a GridPane representing the current state of the biome for display.
+	 * Depending on the player's position, it dynamically loads tiles, NPCs, Pokemon, and items
+	 * within the visible range defined by {@link Constantes#NUMBER_OF_ROW} and {@link Constantes#NUMBER_OF_COL}.
+	 * Updates player's position and displays player's sprite along with health and money information.
+	 *
+	 * @return The constructed GridPane representing the current state of the biome.
+	 */
 	public GridPane loadBiome() {
 		
 		GridPane gridPane = new GridPane();
@@ -512,6 +591,14 @@ public class Game {
 		
         return gridPane;
 	}
+
+	/**
+	 * Displays a text box with the given text message over the game scene.
+	 * The text box is positioned at the bottom of the screen and spans the entire width.
+	 * The text is centered within the text box.
+	 *
+	 * @param line The text message to display in the text box.
+	 */
 	public void loadTextBox(String line) {
 		
 		double rectangleWidth = Constantes.STAGE_WIDTH;
@@ -534,6 +621,15 @@ public class Game {
         root.getChildren().addAll(this.loadBiome(),textBox,text); // Ajouter le GridPane et le rectangle
         this.mapScene.setRoot(root);
 	}
+
+	/**
+	 * Constructs and displays the player's inventory in a GridPane.
+	 * Each inventory slot displays either a transparent border (if accessible)
+	 * or a black border (if inaccessible due to max inventory size).
+	 * Clicking on an item in the inventory triggers its interaction.
+	 *
+	 * @return The constructed GridPane displaying the player's inventory.
+	 */
 	public GridPane loadInventory() {
 
         GridPane gridPane = new GridPane();

@@ -42,6 +42,8 @@ public class FightingEntity extends Entity {
 	 * @param hp             the hit points (hp) of the FightingEntity
 	 * @param atk            the attack power (atk) of the FightingEntity
 	 * @param duelSpritePath the file path of the sprite to be used in combat for the FightingEntity
+	 * @param money the entity's money
+	 * @param maxInventory the max the entity's inventory can hold
 	 */
 	public FightingEntity(String spritePath, String name, double money, int maxInventory, double hp, double atk, String duelSpritePath) {
 		super(spritePath, name, money, maxInventory);

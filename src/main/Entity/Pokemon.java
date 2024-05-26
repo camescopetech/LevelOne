@@ -35,6 +35,7 @@ public class Pokemon extends FightingEntity {
 	 * @param name           the name of the entity
 	 * @param hp             the hit points (hp) of the Pokemon
 	 * @param atk            the attack power (atk) of the Pokemon
+	 * @param money			  the money of the pokemon
 	 * @param duelSpritePath the file path of the sprite to be used in combat for the Pokemon
 	 */
 	public Pokemon(String spritePath, String name, double money, double hp, double atk, String duelSpritePath) {

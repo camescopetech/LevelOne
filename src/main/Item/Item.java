@@ -24,7 +24,6 @@ public class Item {
 	private double price;
 	private String description;
 
-
 	/**
 	 * Constructs an Item with the specified properties.
 	 *
@@ -33,6 +32,9 @@ public class Item {
 	 * @param spritePath the path to the sprite image
 	 * @param isUsableInDuel whether the item is usable in duels
 	 * @param isUsableInBiome whether the item is usable in biomes
+	 * @param isSellable whether the item is sellable
+	 * @param price the price of the item
+	 * @param description the description of the item
 	 */
 	public Item(int id, String name, String spritePath, boolean isUsableInDuel, boolean isUsableInBiome, boolean isSellable, double price, String description) {
 		super();
@@ -61,6 +63,9 @@ public class Item {
 	 * @param isUsableInDuel whether the item is usable in duels
 	 * @param nUse the number of uses remaining
 	 * @param isUseableInBiome whether the item is usable in biomes
+	 * @param isSellable whether the item is sellable
+	 * @param price the price of the item
+	 * @param description the description of the item
 	 */
 	public Item(int id, String name, String spritePath, boolean isUsableInDuel, int nUse, boolean isUseableInBiome, boolean isSellable, double price, String description) {
 		super();
@@ -90,6 +95,9 @@ public class Item {
 	 * @param isLimited whether the item has limited uses
 	 * @param nUse the number of uses remaining
 	 * @param isUseableInBiome whether the item is usable in biomes
+	 * @param isSellable whether the item is sellable
+	 * @param price the price of the item
+	 * @param description the description of the item
 	 */
 	public Item(int id, String name, String spritePath, boolean isUsableInDuel, boolean isLimited, int nUse, boolean isUseableInBiome, boolean isSellable, double price, String description) {
 		super();
@@ -253,26 +261,56 @@ public class Item {
 		this.nUseRemain = nUseRemain;
 	}
 
+	/**
+	 * Checks if the item is sellable.
+	 *
+	 * @return true if the item is sellable, false otherwise
+	 */
 	public boolean isSellable() {
 		return isSellable;
 	}
 
+	/**
+	 * Sets whether the item is sellable.
+	 *
+	 * @param sellable true if the item is sellable, false otherwise
+	 */
 	public void setSellable(boolean sellable) {
 		isSellable = sellable;
 	}
 
+	/**
+	 * Gets the price of the item.
+	 *
+	 * @return the price of the item
+	 */
 	public double getPrice() {
 		return price;
 	}
 
+	/**
+	 * Sets the price of the item.
+	 *
+	 * @param price the new price of the item
+	 */
 	public void setPrice(double price) {
 		this.price = price;
 	}
 
+	/**
+	 * Gets the description of the item.
+	 *
+	 * @return the description of the item
+	 */
 	public String getDescription() {
 		return description;
 	}
 
+	/**
+	 * Sets the description of the item.
+	 *
+	 * @param description the new description of the item
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}

@@ -29,7 +29,9 @@ In order to win you must defeat the dracofeu in the boss world.
 ## Inventory
 To access the player's inventory you must press I, to close it you have to press F too.
 
-An item can be used in the world by clicking on it. Some items are not usable in the world, therefore clicking on them won't do anything.
+An item can be used in the world. Some items are not usable in the world, therefore clicking on them won't do anything.
+
+You can click on the item in the inventory to access a brief description, use the object, see of many times you can still use the object and its price. 
 
 The inventory has a max size, the player can't buy or collect more item from the world if the inventory is at max capacity.
 
