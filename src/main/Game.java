@@ -677,6 +677,7 @@ public class Game {
 						 objet.setCloseChangeListener(close -> {
 							 if (close) {
 								 this.endObjet(objet);
+								 this.primaryStage.setScene(this.mapScene);
 							 }
 						 });
 						 objet.setUseChangeListener(use -> {
@@ -708,6 +709,12 @@ public class Game {
         return gridPane;
 	}
 
+	/**
+	 * Handles the interaction when clicking on an item in the player's inventory.
+	 * If the item is usable in the current biome, it triggers its usage and updates the inventory display.
+	 *
+	 * @param item The item clicked in the inventory.
+	 */
 	public void clickInventory(Item item) {
 		System.out.println(item.getName());
 		if(item.isUseableInBiome()){
@@ -721,6 +728,13 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Uses the specified item from the player's inventory based on its name.
+	 * Performs specific actions depending on the item used, such as healing, damaging tiles or Pokémon,
+	 * changing biome, or adding currency.
+	 *
+	 * @param itemName The name of the item to use.
+	 */
 	public void useObjectInventory(String itemName){
 		if (Objects.equals(itemName, Constantes.ITEM_POTION.getName())){
 			this.player.useObject(itemName);
@@ -743,6 +757,11 @@ public class Game {
 		this.primaryStage.setScene(objetScene);
 	}
 
+	/**
+	 * Teleports the player character to a random position in a random biome.
+	 * Handles the scenario where teleporting to a solid element or water tile results in game over.
+	 * Updates the game scene after teleportation.
+	 */
 	private void teleportsPlayer(){
 		int idBiome = getRandomNumber(0, 2);
 		switch(idBiome){
@@ -779,6 +798,14 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Replaces the tiles around the player within a specified radius with a stone block,
+	 * damaging any Pokémon within the affected tiles.
+	 * Updates the game scene after tile replacement.
+	 *
+	 * @param radius The radius around the player to affect tiles.
+	 * @param damage The amount of damage to inflict on Pokémon in the affected tiles.
+	 */
 	private void replaceTilesAroundPlayer(int radius, double damage) {
 		int playerX = this.player.getPosX();
 		int playerY = this.player.getPosY();
@@ -826,7 +853,16 @@ public class Game {
 		}
 	}
 
-	//Win
+	//end
+	/**
+	 * Checks the current game state to determine if the game should end.
+	 *
+	 * @return Constantes.WIN_DRACO if the boss Pokémon is defeated,
+	 *         Constantes.GAME_OVER if the player falls into water without a required item,
+	 *         Constantes.GAME_WIN if a specific Pokémon is not found in the boss biome,
+	 *         Constantes.GAME_OVER if the player's HP drops to 0,
+	 *         Constantes.NO_WIN if none of the end game conditions are met.
+	 */
 	public int checkEndGame() {
 		
 		if(Constantes.BIOME_BOSS.getTile(5, 7).getPokemon() == null) {
@@ -839,10 +875,16 @@ public class Game {
 		} else if (this.player.getHp() == 0){
 			return Constantes.GAME_OVER;
 		}
-		
 		return Constantes.NO_WIN;
 	}
 
+	/**
+	 * Checks if a specific Pokémon exists in the given biome.
+	 *
+	 * @param biome The biome to check.
+	 * @param pokemonName The name of the Pokémon to look for.
+	 * @return true if the Pokémon is found in the biome, false otherwise.
+	 */
 	public boolean checkPokemonBiome(Biome biome, String pokemonName){
 		for( int i = 0; i < biome.getWidth(); i++) {
 			for(int j = 0; j < biome.getHeight(); j++) {
@@ -856,6 +898,13 @@ public class Game {
 		return false;
 	}
 
+	/**
+	 * Checks if a specific PNJ (non-player character) exists in the given biome.
+	 *
+	 * @param biome The biome to check.
+	 * @param pnjName The name of the PNJ to look for.
+	 * @return true if the PNJ is found in the biome, false otherwise.
+	 */
 	public boolean checkPnjBiome(Biome biome, String pnjName){
 		for( int i = 0; i < biome.getWidth(); i++) {
 			for(int j = 0; j < biome.getHeight(); j++) {
@@ -869,6 +918,11 @@ public class Game {
 		return false;
 	}
 
+	/**
+	 * Prepares and returns the scene for the game over state.
+	 *
+	 * @return The Scene object displaying "Game Over" message in the center.
+	 */
 	public Scene endGameOver() {
 
 		Label gameOverLabel = new Label("Game Over");
@@ -885,6 +939,10 @@ public class Game {
 		return sceneOver;
 	}
 
+	/**
+	 * Sets the scene for the game win state where the player has defeated a specific opponent.
+	 * Displays a congratulatory message.
+	 */
 	public void endGameWin() {
 
 		Label gameOverLabel = new Label("Gagné contre B avec X");
@@ -899,6 +957,13 @@ public class Game {
 		this.primaryStage.setScene(new Scene(root, Constantes.STAGE_WIDTH, Constantes.STAGE_HEIGHT));
 	}
 
+	/**
+	 * Generates a random integer between the specified minimum and maximum values (inclusive).
+	 *
+	 * @param min The minimum value of the random number (inclusive).
+	 * @param max The maximum value of the random number (inclusive).
+	 * @return A random integer within the specified range.
+	 */
 	public int getRandomNumber(int min, int max) {
 		return (int) ((Math.random() * (max - min)) + min);
 	}
