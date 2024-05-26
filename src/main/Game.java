@@ -591,6 +591,21 @@ public class Game {
 
 					 });
 
+					 str.setOnMouseClicked(e -> {
+						 Objet objet = new Objet(this.primaryStage, item, this.player);
+						 objet.setCloseChangeListener(close -> {
+							 if (close) {
+								 this.endObjet(objet);
+							 }
+						 });
+						 objet.setUseChangeListener(use -> {
+							 if(use){
+								 clickInventory(item);
+							 }
+						 });
+
+					 });
+
             	 }
             }
          }
