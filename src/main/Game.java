@@ -110,7 +110,7 @@ public class Game {
 				+ "Vous pouvez voir votre HP vos coins en haut à droite.\n"
 				+ "Bon jeu ! \n" + " \n"
 				+ "Les commandes : \n"
-				+ "Fleche haut, bas, droite et gauche pour se deplacer.\nF pour interagir avec les items et les PNJ.\nI pour l'inventaire.\nAppuyer sur F pour commencer a jouer");
+				+ "Flèche haut, bas, droite et gauche pour se deplacer.\nF pour intéragir avec les items et les PNJ.\nI pour l'inventaire.\nAppuyer sur F pour commencer a jouer");
         
         Scene controlScene = new Scene(control, Constantes.STAGE_HEIGHT , Constantes.STAGE_WIDTH);
         controlScene.setOnKeyPressed(e -> {
@@ -253,7 +253,7 @@ public class Game {
 				//int i = 0;
 				if(this.biome.getTile(x, y).getPnj().getName().equals("voleur")){
 					CustomPopup.showPopup("Voleur", "Voleur",
-							"Si votre inventaire est vide le voleur vous souhaite 'Bonne journee' \n"
+							"Si votre inventaire est vide le voleur vous souhaite 'Bonne journée' \n"
 									+ "Sinon il vole un objet de votre inventaire au hasard. \n");
 					if(this.player.getInventory().isEmpty()){
 						System.out.println(this.player.getInventory().size());
@@ -261,10 +261,10 @@ public class Game {
 					} else {
 						int ran = getRandomNumber(0, this.player.getInventory().size());
 						this.player.getInventory().remove(ran);
-						this.loadTextBox("Je t'ai vole un objet au hasard !");
+						this.loadTextBox("Je t'ai volé un objet au hasard !");
 					}
 				} else if(this.biome.getTile(x, y).getPnj().getName().equals("Marchand")){
-					System.out.println("Debut vente");
+					System.out.println("Début vente");
 					CustomPopup.showPopup("Vente", "Vente", "Vous pouvez vendre et acheter \n"
 																		+ "des objets avec le marchand ici !");
 
@@ -278,11 +278,11 @@ public class Game {
 						}
 					});
 				} else if (this.biome.getTile(x, y).getPnj().getName().equals("swap")){
-					CustomPopup.showPopup("Swap", "Swap", "Il vous echange l'item swimmer \n"
+					CustomPopup.showPopup("Swap", "Swap", "Il vous échange l'item swimmer \n"
 																		+ this.biome.getTile(x, y).getPnj().getInventoryElement(0).getName());
 					if(!this.biome.getTile(x, y).getPnj().getInventory().isEmpty()) {
 						if (this.player.inventoryContainsItem(Constantes.ITEM_SWIM.getId())){
-							this.loadTextBox("J'ai echange ton item swimmer contre " + this.biome.getTile(x, y).getPnj().getInventoryElement(0).getName());
+							this.loadTextBox("J'ai échangé ton item swimmer contre " + this.biome.getTile(x, y).getPnj().getInventoryElement(0).getName());
 							this.player.getInventory().add(this.biome.getTile(x, y).getPnj().getInventoryElement(0));
 							this.biome.getTile(x, y).getPnj().getInventory().remove(this.biome.getTile(x, y).getPnj().getInventoryElement(0));
 							this.player.getInventory().remove(Constantes.ITEM_SWIM);
@@ -293,11 +293,11 @@ public class Game {
 						}
 
 					} else {
-						this.loadTextBox("Je n'ai rien a echanger");
+						this.loadTextBox("Je n'ai rien a échanger");
 					}
 				}
 				else {
-					CustomPopup.showPopup("Vieillard", "Vieillard", "Parlez avec le vieillard pour connaitre votre quete.");
+					CustomPopup.showPopup("Vieillard", "Vieillard", "Parlez avec le vieillard pour connaître votre quête.");
 					this.loadTextBox(this.biome.getTile(x, y).getPnj().getDialog()[0]);
 				}
 
@@ -307,10 +307,10 @@ public class Game {
 				CustomPopup.showPopup("Combat", "Combat", "Vous allez combattre un pokemon. \n"
 																			+ "Le bouton ATTAQUE permet d'attaquer le pokemon " + this.biome.getTile(x, y).getPokemon().getName() + " avec " + this.player.getAtk() + " de points d'attaque\n"
 																			+ "Ce pokemon a " + this.biome.getTile(x, y).getPokemon().getHpMax() + "d'HP\n"
-																			+ "et fait des degats de " + this.biome.getTile(x, y).getPokemon().getAtk() + " points."
+																			+ "et fait des dégâts de " + this.biome.getTile(x, y).getPokemon().getAtk() + " points."
 																			+ "Vous avez " + this.player.getHp() + "d'HP actuellement.\n"
 																			+ "Le menu déroulant au milieu permet de sélectionner un item utilisable en \nduel de l'inventaire du joueur,\n"
-																			+ "Le bouton UTILISER permet d'utiliser cet item. \n"
+																			+ "Le bouton UTILISER permet d'utiliser cet item pendant le combat. \n"
 																			+ "Vous pouvez voir votre HP et celui du pokemon durant le combat.\n"
 																			+ "Bon combat !");
 
@@ -394,7 +394,7 @@ public class Game {
             else {
             	this.goToSpawnPoint();
             	this.player.setHp(this.player.getHpMax());
-            	this.loadTextBox("Papi vous a sauv� et gu�rit");
+            	this.loadTextBox("Papi vous a sauvé et guérit.\nVotre HP est au max.");
             }
 
        
@@ -498,7 +498,7 @@ public class Game {
 			Label l = new Label();
 			
 			if(endGameStatut  == Constantes.WIN_DRACO) {
-				l.setText("Victoire: Vous avez battu dracofeu et sauv� Papi.");
+				l.setText("Victoire: Vous avez battu dracofeu et sauvé Papi.");
 			} else if (endGameStatut == Constantes.GAME_OVER) {
 				this.primaryStage.setScene(endGameOver());
 			} else if (endGameStatut == Constantes.GAME_WIN) {
@@ -678,7 +678,7 @@ public class Game {
 			Alert alert = new Alert(Alert.AlertType.WARNING);
 			alert.setTitle("Téléportation impossible");
 			alert.setHeaderText(null);
-			alert.setContentText("Teleportation impossible.. \nVous etiez arrive sur un element solide");
+			alert.setContentText("Téléportation impossible.. \nVous étiez arrive sur un élément solide");
 			alert.showAndWait();
 		}
 	}
@@ -734,7 +734,7 @@ public class Game {
 	public int checkEndGame() {
 		
 		if(Constantes.BIOME_BOSS.getTile(5, 7).getPokemon() == null) {
-			System.out.println("Vous avez gagn�");
+			System.out.println("Vous avez gagné");
 			return Constantes.WIN_DRACO;
 		} else if (this.biome.getTile(this.player.getPosX(), this.player.getPosY()).getBloc().getId() == Constantes.BLOC_WATER.getId() && !player.inventoryContainsItem(3)){
 			return Constantes.GAME_OVER;
