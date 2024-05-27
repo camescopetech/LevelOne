@@ -132,7 +132,9 @@ public class Objet {
 
         // Remaining uses of the item
         Label nUseLabel = new Label("");
-        if (this.item.getnUseRemain() > 1) {
+        if (this.item.getName().equals("teleportation")) {
+            nUseLabel.setText("L'objet s'utilise à l'infini.");
+        } else if (this.item.getnUseRemain() > 1) {
             nUseLabel.setText("Il reste " + this.item.getnUseRemain() + " utilisations");
         } else if (this.item.getnUseRemain() <= 1) {
             nUseLabel.setText("Il reste " + this.item.getnUseRemain() + " utilisation");

@@ -125,7 +125,7 @@ public class Constantes {
 			"pour les donner au joueur. Cet item ne peut pas être utilisé hors combat. ");
 
 	/** Item allowing random teleportation. */
-	public final static Item ITEM_TELEPORTATION = new Item(8, "teleportation", "main/img/teleportation.png", false, 15, true, true, 60, "Permet de se teleporter aleatoirement.");
+	public final static Item ITEM_TELEPORTATION = new Item(8, "teleportation", "main/img/teleportation.png", false, 100, true, true, 60, "Permet de se teleporter aleatoirement.");
 
 	/** Item reducing attack by 50%. */
 	public final static Item ITEM_MALUS_50 = new Item(9, "malus50", "main/img/malus.png", true, 1, false, true, 60, "Votre attaque est reduite de 50%.");

@@ -14,4 +14,18 @@ soit "Je ne possède rien" comme texte.
 ITEM 1 :
 Ajout d'une classe Item1, permettant de sélectionner un PNJ et de voir dans un menu déroulant les items de son inventaire.
 Cette classe est appelé lors du click sur l'objet en question dans l'inventaire.
-Il n'est utilisable qu'une fois. 
+Il n'est utilisable qu'une fois.
+
+ITEM 3 :
+Cet item s'appelle teleportation. Il est sur le monde House (le 1er) et ressemble à un diamant. Voir le readme.
+Cet item est utilisable à l'infini.
+
+ITEM 4 :
+Cet item s'appelle item4. Il n'est utilisable qu'en duel.
+Il donne tous les HP restants du pokemon au joueur, et ferme le duel car le pokemon est mort.
+
+ITEM 5 :
+Il s'appelle win et se voit comme un rectangle rouge. Quand on clique sur utiliser un message s'affiche pour signifier la fin du jeu.
+
+
+
