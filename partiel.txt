@@ -1,3 +1,5 @@
+https://github.com/camescopetech/LevelOne/tree/partiel
+
 Inventaire max de taille 5 :
 Déjà implémenté dans le jeu. Cet attribut est rajouté dans la classe Entity, ainsi toute entité a une taille max d'inventaire.
 La taille d'inventaire de 5 est attribué au joueur dans la classe Player.
@@ -16,6 +18,7 @@ Ajout d'une classe Item1, permettant de sélectionner un PNJ et de voir dans un 
 Cette classe est appelé lors du click sur l'objet en question dans l'inventaire.
 Il n'est utilisable qu'une fois.
 J'ai rajouté une methode hasMetPnj dans Player permettant de voir si un joueur a déjà rencontré un PNJ.
+J'ai modifié la méthode loadInventory() dans Game pour appeler directement cet affichage lors de l'appel de cet objet.
 Cet item est une pièce de monnaie.
 J'ai modifié la classe Game afin de pouvoir faire ces actions.
 
