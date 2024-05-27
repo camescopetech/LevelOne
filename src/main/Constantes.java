@@ -121,6 +121,8 @@ public class Constantes {
 
 	/** Item representing a bomb with a 9-cell radius effect. */
 	public final static Item ITEM_BOMB_10 = new Item(7, "bomb", "main/img/bomb.png", false, 1,true, false, 0, "Fais tout exploser dans un rayon de 9 cases. \nLe joueur et les pokemons impactes perdent 30HP, les items sont enleves \nmais les PNJ ne sont pas affectes.");
+	public final static Item ITEM_4 = new Item(8, "item4", "main/img/bomb.png", true, false, false, 0, "Permet d'absorber tous les points de vie restants d'un monstre lors d'un combat\n" +
+			"pour les donner au joueur. Cet item ne peut pas être utilisé hors combat. ");
 
 	/** Item allowing random teleportation. */
 	public final static Item ITEM_TELEPORTATION = new Item(8, "teleportation", "main/img/teleportation.png", false, 15, true, true, 60, "Permet de se teleporter aleatoirement.");

@@ -231,7 +231,21 @@ public class Duel {
 					System.out.println("Victoire");
 					this.isPlayerWin = true;
 					this.setIsClose(true);
-				} else {
+				} else if (this.itemsBox.getValue().equals("item4")){
+					double currentHpPoke = this.pokemon.getHp();
+					double currentHpPlay = this.player.getHp();
+					if (currentHpPoke+currentHpPlay > this.player.getHpMax()){
+						this.player.setHpMax(currentHpPoke+currentHpPlay);
+						this.player.setHp(currentHpPoke+currentHpPlay);
+					} else {
+						this.player.setHp(currentHpPoke+currentHpPlay);
+					}
+					this.pokemon.setHp(0);
+					this.isPlayerWin = true;
+					this.setIsClose(true);
+					this.player.useObject("item4");
+				}
+				else {
 					this.player.useObject(this.itemsBox.getValue().toString());
 					this.scene.setRoot(this.loadDuel());
 					this.primaryStage.setScene(this.scene);
