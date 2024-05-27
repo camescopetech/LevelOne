@@ -120,6 +120,9 @@ public class VillageBiome extends Biome {
 		this.getTile(3, 0).setBloc(Constantes.BLOC_NETHER.deepCopy());
 		this.getTile(3, 0).setTpTile(1, 5, 1);
 
+		this.getTile(7, 4).setBloc(Constantes.BLOC_NETHER.deepCopy());
+		this.getTile(3, 0).setTpTile(1, 5, 1);
+
 		// PNJ
 		String[] dialog = { "Pikachu a vole les cle du portail! \nC'est le seul moyen d'acceder à la grotte \noù se trouve Papi !! \n Pikachu se cache surement dans l'eau..." };
 		this.getTile(5, 5).setPnj(new Pnj("main/img/vieux.png", dialog, "vieux", 0));

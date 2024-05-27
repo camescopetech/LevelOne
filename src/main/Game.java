@@ -710,6 +710,7 @@ public class Game {
 								 if (close) {
 									 this.endItem1(item1);
 									 this.primaryStage.setScene(this.mapScene);
+									 this.player.getInventory().remove(Constantes.ITEM_1);
 								 }
 							 });
 						 } else {
@@ -736,6 +737,7 @@ public class Game {
 								 if (close) {
 									 this.endItem1(item1);
 									 this.primaryStage.setScene(this.mapScene);
+									 this.player.getInventory().remove(Constantes.ITEM_1);
 								 }
 							 });
 						 } else {
@@ -796,7 +798,7 @@ public class Game {
 			replaceTilesAroundPlayer(3, 30);
 			this.player.useObject(itemName);
 		} else if (Objects.equals(itemName, Constantes.ITEM_TELEPORTATION.getName())){
-			teleportsPlayer();
+			teleportsPlayerLieu();
 			this.player.useObject(itemName);
 		} else if (Objects.equals(itemName, Constantes.ITEM_MALUS_50.getName())) {
 			double currentAtk = this.player.getAtk();
@@ -835,7 +837,7 @@ public class Game {
 		}
 		int x = getRandomNumber(0, Constantes.NUMBER_OF_COL);
 		int y = getRandomNumber(0, Constantes.NUMBER_OF_ROW);
-		if (!this.biome.getTile(x,y).getBloc().isSolid()) {
+		if (this.biome.getTile(x+2,y+2).getBloc().equals(Constantes.BLOC_HOUSE)) {
 			System.out.println(this.biome);
 			this.player.setPosX(x);
 			this.player.setPosY(y);
@@ -851,6 +853,41 @@ public class Game {
 			alert.setHeaderText(null);
 			alert.setContentText("Téléportation impossible.. \nVous étiez arrive sur un élément solide");
 			alert.showAndWait();
+		}
+	}
+
+	private void teleportsPlayerLieu(){
+		int teleport = getRandomNumber(0,2);
+		if (this.biome.equals(Constantes.BIOME_HOUSE)) {
+			switch(teleport){
+				case 0:
+					this.player.setPosX(5);
+					this.player.setPosY(1);
+					break;
+				case 1:
+					this.player.setPosX(7);
+					this.player.setPosY(1);
+					break;
+				default:
+					break;
+			}
+			this.mapScene.setRoot(loadBiome());
+			this.primaryStage.setScene(mapScene);
+		} else if (this.biome.equals(Constantes.BIOME_VILLAGE)){
+			switch(teleport){
+				case 0:
+					this.player.setPosX(3);
+					this.player.setPosY(1);
+					break;
+				case 1:
+					this.player.setPosX(7);
+					this.player.setPosY(5);
+					break;
+				default:
+					break;
+			}
+			this.mapScene.setRoot(loadBiome());
+			this.primaryStage.setScene(mapScene);
 		}
 	}
 
