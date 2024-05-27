@@ -149,9 +149,9 @@ public class Objet {
         // Use button action
         useBtn.setDisable(!this.item.isUseableInBiome());
         useBtn.setOnAction(event -> {
-            if (this.item.getName().equals(Constantes.ITEM_OVER.getName())) {
+            if (this.item.getName().equals(Constantes.ITEM_WIN.getName())) {
                 handleUseBtn();
-                this.primaryStage.setScene(endGameOver());
+                this.primaryStage.setScene(endGameWin());
             } else if(this.item.getName().equals(Constantes.ITEM_1.getName())){
 
             }
@@ -175,9 +175,9 @@ public class Objet {
      *
      * @return the scene indicating game over
      */
-    public Scene endGameOver() {
-        Label gameOverLabel = new Label("Game Over");
-        gameOverLabel.setFont(new Font("Arial", 40));
+    public Scene endGameWin() {
+        Label gameOverLabel = new Label("Bravo vous avez gagné");
+        gameOverLabel.setFont(new Font("Arial", 20));
         gameOverLabel.setTextFill(Color.RED);
         gameOverLabel.setAlignment(Pos.CENTER);
 

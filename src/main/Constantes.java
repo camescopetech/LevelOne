@@ -114,7 +114,7 @@ public class Constantes {
 	public final static Item ITEM_X = new Item(4, "X", "main/img/toxic-orb.png", true, 1, false, false, 0, "Permet de battre le pokemon B directement.");
 
 	/** Item causing instant game over. */
-	public final static Item ITEM_OVER = new Item(5, "over", "main/img/flame.png", false, 1, true, false, 0, "Game over instantané");
+	public final static Item ITEM_WIN = new Item(5, "win", "main/img/flame.png", false, 1, true, false, 0, "Jeu gagné instantanément");
 
 	/** Item allowing passage through trees. */
 	public final static Item ITEM_KTREE = new Item(6, "keyTree", "main/img/keyTree.png", false, false, false, 0, "Permet de marcher a travers les arbres, sinon vous serez bloque.");

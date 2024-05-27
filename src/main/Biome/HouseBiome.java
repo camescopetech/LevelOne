@@ -52,7 +52,7 @@ public class HouseBiome extends Biome {
 		String[] dialogNewPNJ = {""};
 		this.getTile(5,6).setPnj(new Pnj("main/img/swap.png", dialogNewPNJ, "newPnj", 0));
 		this.getTile(5,6).getPnj().getInventory().add(Constantes.ITEM_X.deepCopy());
-		this.getTile(5,6).getPnj().getInventory().add(Constantes.ITEM_OVER.deepCopy());
+		this.getTile(5,6).getPnj().getInventory().add(Constantes.ITEM_WIN.deepCopy());
 		this.getTile(5,6).getPnj().getInventory().add(Constantes.ITEM_TELEPORTATION.deepCopy());
 
 		// Loot
@@ -60,7 +60,7 @@ public class HouseBiome extends Biome {
 
 		this.getTile(9, 3).setItem(Constantes.ITEM_SWIM.deepCopy());
 
-		this.getTile(5, 3).setItem(Constantes.ITEM_OVER.deepCopy());
+		this.getTile(5, 3).setItem(Constantes.ITEM_WIN.deepCopy());
 
 		this.getTile(6, 7).setPokemon(new Pokemon("main/img/magneton.png", "M", 0, 10, 10, "main/img/magneton.png"));
 
