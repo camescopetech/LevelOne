@@ -121,11 +121,11 @@ public class Constantes {
 
 	/** Item representing a bomb with a 9-cell radius effect. */
 	public final static Item ITEM_BOMB_10 = new Item(7, "bomb", "main/img/bomb.png", false, 1,true, false, 0, "Fais tout exploser dans un rayon de 9 cases. \nLe joueur et les pokemons impactes perdent 30HP, les items sont enleves \nmais les PNJ ne sont pas affectes.");
-	public final static Item ITEM_4 = new Item(8, "item4", "main/img/bomb.png", true, false, false, 0, "Permet d'absorber tous les points de vie restants d'un monstre lors d'un combat\n" +
+	public final static Item ITEM_4 = new Item(8, "item4", "main/img/item4.png", true, false, false, 0, "Permet d'absorber tous les points de vie restants d'un monstre lors d'un combat\n" +
 			"pour les donner au joueur. Cet item ne peut pas être utilisé hors combat. ");
 
 	/** Item allowing random teleportation. */
-	public final static Item ITEM_TELEPORTATION = new Item(8, "teleportation", "main/img/teleportation.png", false, 15, true, true, 60, "Permet de se teleporter aleatoirement.");
+	public final static Item ITEM_TELEPORTATION = new Item(8, "teleportation", "main/img/teleportation.png", false, 100, true, true, 60, "Permet de se teleporter aleatoirement.");
 
 	/** Item reducing attack by 50%. */
 	public final static Item ITEM_MALUS_50 = new Item(9, "malus50", "main/img/malus.png", true, 1, false, true, 60, "Votre attaque est reduite de 50%.");
@@ -133,6 +133,9 @@ public class Constantes {
 	/** Item representing 10 coins. */
 	public final static Item ITEM_COIN_10 = new Item(10, "coins", "main/img/coins.png", false, 1, true, true, 10, "10 coins");
 	public final static Item ITEM_1 = new Item(11, "item1", "main/img/coins.png", false, 1, true, false, 0, "permet d'afficher le contenu de l'inventaire d'un PNJ rencontré \n(i.e., avec lequel le joueur a déjà interagi au moins une fois). \nCet item ne peut pas être utilisé si le joueur n'a pas encore rencontré de PNJ.");
+	public final static Item ITEM_2 = new Item(12, "item2", "main/img/item2.png", false, 3, true, false, 0,
+			"Item2 permet de voler au choix un item de l'inventaire d'un PNJ rencontré \n(i.e., avec lequel le joueur a déjà interagi au moins une fois). Cet item ne peut pas être utilisé si le joueur \nn'a pas encore rencontré de PNJ. Cet item est supprimé de l'inventaire du joueur s'il est utilisé sur un PNJ ne possédant aucun item");
+
 	// main.Biome
 	/** Biome representing a village. */
 	public final static Biome BIOME_VILLAGE = new VillageBiome();

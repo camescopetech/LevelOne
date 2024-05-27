@@ -44,6 +44,9 @@ public class HouseBiome extends Biome {
 		this.getTile(7, 0).setBloc(Constantes.BLOC_DOOR.deepCopy());
 		this.getTile(7, 0).setTpTile(0, 11, 6);
 
+		this.getTile(8, 0).setBloc(Constantes.BLOC_DOOR.deepCopy());
+		this.getTile(8, 0).setTpTile(0, 11, 6);
+
 		// PNJ
 		String[] dialog = { "Aide mon ami bloque dans la grotte... \nTu peux y acceder en sortant de la maison peut etre.." };
 		this.getTile(1, 2).setPnj(new Pnj("main/img/vieux.png", dialog, "vieux", 0));
@@ -53,10 +56,16 @@ public class HouseBiome extends Biome {
 		this.getTile(7, 6).getPnj().getInventory().add(Constantes.ITEM_X);
 
 		String[] dialogNewPNJ = {""};
-		this.getTile(5,6).setPnj(new Pnj("main/img/swap.png", dialogNewPNJ, "newPnj", 0));
-		this.getTile(5,6).getPnj().getInventory().add(Constantes.ITEM_X.deepCopy());
-		this.getTile(5,6).getPnj().getInventory().add(Constantes.ITEM_WIN.deepCopy());
-		this.getTile(5,6).getPnj().getInventory().add(Constantes.ITEM_TELEPORTATION.deepCopy());
+		this.getTile(5,6).setPnj(new Pnj("main/img/pnj1.png", dialogNewPNJ, "newPnj", 0));
+		this.getTile(5,6).getPnj().getInventory().add(Constantes.ITEM_1.deepCopy());
+		this.getTile(5,6).getPnj().getInventory().add(Constantes.ITEM_1.deepCopy());
+		this.getTile(5,6).getPnj().getInventory().add(Constantes.ITEM_2.deepCopy());
+
+		String[] dialogNewPNJ2 = {""};
+		this.getTile(9,1).setPnj(new Pnj("main/img/pnj1.png", dialogNewPNJ2, "newPnj", 0));
+		this.getTile(9,1).getPnj().getInventory().add(Constantes.ITEM_2.deepCopy());
+		this.getTile(9,1).getPnj().getInventory().add(Constantes.ITEM_2.deepCopy());
+		this.getTile(9,1).getPnj().getInventory().add(Constantes.ITEM_1.deepCopy());
 
 		// Loot
 		this.getTile(8, 2).setItem(Constantes.ITEM_POTION.deepCopy());
@@ -70,9 +79,15 @@ public class HouseBiome extends Biome {
 		this.getTile(4, 3).setPnj(new Pnj("main/img/marchand.png", dialogNew, "Marchand", 10));
 		this.getTile(4, 3).getPnj().getInventory().add(Constantes.ITEM_POTION);
 
+
 		this.getTile(2,3).setItem(Constantes.ITEM_BOMB_10.deepCopy());
 
 		this.getTile(8,9).setItem(Constantes.ITEM_TELEPORTATION.deepCopy());
 		this.getTile(9,10).setItem(Constantes.ITEM_MALUS_50.deepCopy());
+
+		this.getTile(3,4).setItem(Constantes.ITEM_1.deepCopy());
+		this.getTile(4,5).setItem(Constantes.ITEM_1.deepCopy());
+		this.getTile(2,4).setItem(Constantes.ITEM_2.deepCopy());
+		this.getTile(8,9).setItem(Constantes.ITEM_2.deepCopy());
 	}
 }

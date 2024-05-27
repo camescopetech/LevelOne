@@ -35,7 +35,10 @@ public class Player extends FightingEntity {
 	public Player() {
 		super("main/img/player_south.png", "Sacha", 50, 5, 50, 20, "main/img/duel_player.png");
 		getInventory().add(Constantes.ITEM_1.deepCopy());
+		getInventory().add(Constantes.ITEM_2.deepCopy());
+		getInventory().add(Constantes.ITEM_TELEPORTATION.deepCopy());
 		getInventory().add(Constantes.ITEM_4.deepCopy());
+		getInventory().add(Constantes.ITEM_WIN.deepCopy());
 	}
 
 	//GetSet

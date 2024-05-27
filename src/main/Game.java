@@ -30,6 +30,7 @@ public class Game {
 	private Scene venteScene;
 	private Scene objetScene;
 	private Scene item1Scene;
+	private Scene item2Scene;
 	private Biome biome;
 	private Player player;
 	private Stage primaryStage;
@@ -866,6 +867,10 @@ public class Game {
 					break;
 				case 1:
 					this.player.setPosX(7);
+					this.player.setPosY(1);
+					break;
+				case 2:
+					this.player.setPosX(8);
 					this.player.setPosY(1);
 					break;
 				default:

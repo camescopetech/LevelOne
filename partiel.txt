@@ -4,14 +4,36 @@ La taille d'inventaire de 5 est attribué au joueur dans la classe Player.
 L'inventaire s'affiche en appuyant sur la touche I, les cases non disponibles sont en noirs.
 Si le joueur tente de récupérer plus d'autres une alerte s'affiche pour dire que l'inventaire est a son maximum.
 
-Nouveau PNJ :
+Nouveau PNJ 1:
 Le PNJ a été ajouté dans le premier monde, HouseBiome ligne 53.
 Il a dans son inventaire 3 objets.
 Quand on interagit avec ce PNJ (avec la touche F) une texte box s'affiche avec soit la liste des items de son inventaire
 soit "Je ne possède rien" comme texte.
 
-
 ITEM 1 :
 Ajout d'une classe Item1, permettant de sélectionner un PNJ et de voir dans un menu déroulant les items de son inventaire.
 Cette classe est appelé lors du click sur l'objet en question dans l'inventaire.
-Il n'est utilisable qu'une fois. 
+Il n'est utilisable qu'une fois.
+Il ressemble à une pièce de monnaie. On le retrouve dans le monde 1.
+
+ITEM 2 :
+Il n'est utilisable qu'une fois.
+Ajout d'une classe Item2 qui permet, in fine, de voler un item à un PNJ.
+Je n'ai pas eu le temps de l'implémenter plus que ça.
+Il ressemble à une pokeball blanche.
+
+ITEM 3 :
+Cet item s'appelle teleportation. Il est sur le monde House (le 1er) et ressemble à un diamant. Voir le readme.
+Cet item est utilisable à l'infini.
+Il transporte devant un lieu dans le monde 1 et 2.
+Les lieux du monde 1 sont des portes (BLOC_DOOR), les lieux du monde 2 sont une grotte (BLOC_NETHER).
+
+ITEM 4 :
+Cet item s'appelle item4. Il n'est utilisable qu'en duel. Il ressemble a une pokeball bleue.
+Il donne tous les HP restants du pokemon au joueur, et ferme le duel car le pokemon est mort.
+
+ITEM 5 :
+Il s'appelle win et se voit comme un rectangle rouge. Quand on clique sur utiliser un message s'affiche pour signifier la fin du jeu.
+
+
+
