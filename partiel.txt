@@ -14,4 +14,26 @@ soit "Je ne possède rien" comme texte.
 ITEM 1 :
 Ajout d'une classe Item1, permettant de sélectionner un PNJ et de voir dans un menu déroulant les items de son inventaire.
 Cette classe est appelé lors du click sur l'objet en question dans l'inventaire.
-Il n'est utilisable qu'une fois. 
+Il n'est utilisable qu'une fois.
+J'ai rajouté une methode hasMetPnj dans Player permettant de voir si un joueur a déjà rencontré un PNJ.
+Cet item est une pièce de monnaie.
+J'ai modifié la classe Game afin de pouvoir faire ces actions.
+
+ITEM 2 :
+Ajout d'une classe Item2 permettant d'ouvrir une scene qui aurait permis de voler un objet de l'inventaire du pnj.
+Cet item est une pokeball blanche.
+
+ITEM 3 :
+Cet objet, qui est un diamant, s'utilise pour amener en face d'un lieu du monde dans lequel le joueur se trouve. Il s'appelle ITEM_TELEPORTATION
+Les lieux dans le monde 1 sont des portes, les lieux dans le monde 2 sont des grottes.
+J'ai rajouté une méthode dans Game teleportsPlayerLieux() qui permet de transporter aléatoirement devant l'un de ces lieux.
+
+ITEM 4 :
+Cet objet est une pokeball bleue. Il ne s'utilise qu'en duel.
+J'ai rajouté une condition d'utilisation dans la méthode handleUseBtn() de la classe Duel.
+
+ITEM 5 :
+Cet objet ressemble a un rectangle rouge. Il s'appelle ITEM_WIN.
+Il affiche un texte qui indique que vous avez gagné. On ne peut plus jouer après l'avoir utilisé.
+J'ai modifié ma classe Objet poir ceci, en rajoutant une méthode endGameWin() qui permet l'affichage du texte lors de l'utilisation de cet objet.
+
