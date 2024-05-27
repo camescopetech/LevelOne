@@ -130,7 +130,7 @@ public class Constantes {
 
 	/** Item representing 10 coins. */
 	public final static Item ITEM_COIN_10 = new Item(10, "coins", "main/img/coins.png", false, 1, true, true, 10, "10 coins");
-
+	public final static Item ITEM_1 = new Item(11, "item1", "main/img/coins.png", false, 1, true, false, 0, "permet d'afficher le contenu de l'inventaire d'un PNJ rencontré \n(i.e., avec lequel le joueur a déjà interagi au moins une fois). \nCet item ne peut pas être utilisé si le joueur n'a pas encore rencontré de PNJ.");
 	// main.Biome
 	/** Biome representing a village. */
 	public final static Biome BIOME_VILLAGE = new VillageBiome();

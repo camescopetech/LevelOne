@@ -25,6 +25,7 @@ public class Player extends FightingEntity {
 	 */
 	private int posY;
 
+
 	//Cons
 	/**
 	 * Creates a new Player with the default sprite path, name, hit points (hp), attack power (atk),
@@ -33,6 +34,7 @@ public class Player extends FightingEntity {
 	 */
 	public Player() {
 		super("main/img/player_south.png", "Sacha", 50, 5, 50, 20, "main/img/duel_player.png");
+		getInventory().add(Constantes.ITEM_1.deepCopy());
 	}
 
 	//GetSet
@@ -79,6 +81,14 @@ public class Player extends FightingEntity {
 	 */
 	public int getDirection() {
 		return this.direction;
+	}
+
+	public boolean hasMetPnj(Pnj pnj) {
+		return true;
+	}
+
+	public boolean hasNotMetPnj(Pnj pnj) {
+		return false;
 	}
 
 	//Meth

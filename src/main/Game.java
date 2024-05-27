@@ -29,6 +29,7 @@ public class Game {
 	private Scene duelScene;
 	private Scene venteScene;
 	private Scene objetScene;
+	private Scene item1Scene;
 	private Biome biome;
 	private Player player;
 	private Stage primaryStage;
@@ -100,6 +101,14 @@ public class Game {
 		this.venteScene.setOnKeyPressed(e -> {
 			if (e.getCode().equals(Constantes.KEY_INVENTORY)) {
 				System.out.println("objet");
+			}
+		});
+
+		Label item1Label = new Label("");
+		this.item1Scene = new Scene(item1Label, Constantes.STAGE_HEIGHT, Constantes.STAGE_WIDTH);
+		this.item1Scene.setOnKeyPressed(e -> {
+			if (e.getCode().equals(Constantes.KEY_INVENTORY)) {
+				System.out.println("item1");
 			}
 		});
         
@@ -299,10 +308,11 @@ public class Game {
 		
 		if(this.biome.isTileExist(x, y)) {
 			if(this.biome.getTile(x, y).getPnj() != null && this.biome.getTile(x, y).getPnj().getDialog() != null) {
-				
 				//int nLine = this.biome.getTile(x, y).getPnj().getDialog().length;
 				//int i = 0;
+				this.player.hasNotMetPnj(this.biome.getTile(x, y).getPnj());
 				if(this.biome.getTile(x, y).getPnj().getName().equals("voleur")){
+					this.player.hasMetPnj(this.biome.getTile(x, y).getPnj());
 					CustomPopup.showPopup("Voleur", "Voleur",
 							"Si votre inventaire est vide le voleur vous souhaite 'Bonne journée' \n"
 									+ "Sinon il vole un objet de votre inventaire au hasard. \n");
@@ -315,6 +325,7 @@ public class Game {
 						this.loadTextBox("Je t'ai volé un objet au hasard !");
 					}
 				} else if(this.biome.getTile(x, y).getPnj().getName().equals("Marchand")){
+					this.player.hasMetPnj(this.biome.getTile(x, y).getPnj());
 					System.out.println("Début vente");
 					CustomPopup.showPopup("Vente", "Vente", "Vous pouvez vendre et acheter \n"
 																		+ "des objets avec le marchand ici !");
@@ -329,6 +340,7 @@ public class Game {
 						}
 					});
 				} else if (this.biome.getTile(x, y).getPnj().getName().equals("swap")){
+					this.player.hasMetPnj(this.biome.getTile(x, y).getPnj());
 					CustomPopup.showPopup("Swap", "Swap", "Il vous échange l'item swimmer \n"
 																		+ this.biome.getTile(x, y).getPnj().getInventoryElement(0).getName());
 					if(!this.biome.getTile(x, y).getPnj().getInventory().isEmpty()) {
@@ -347,6 +359,7 @@ public class Game {
 						this.loadTextBox("Je n'ai rien a échanger");
 					}
 				} else if (this.biome.getTile(x, y).getPnj().getName().equals("newPnj")) {
+					this.player.hasMetPnj(this.biome.getTile(x, y).getPnj());
 					if (this.biome.getTile(x, y).getPnj().getInventory().isEmpty()) {
 						this.loadTextBox("Je ne possède rien.");
 					} else {
@@ -358,7 +371,8 @@ public class Game {
 						}
 						this.loadTextBox(str);
 					}
-				} else {
+				}
+				else {
 					CustomPopup.showPopup("Vieillard", "Vieillard", "Parlez avec le vieillard pour connaître votre quête.");
 					this.loadTextBox(this.biome.getTile(x, y).getPnj().getDialog()[0]);
 				}
@@ -432,6 +446,13 @@ public class Game {
 	 */
 	public void endObjet(Objet objet) {
 		if (objet.getClose()) {
+			this.inventoryScene.setRoot(this.loadInventory());
+			this.primaryStage.setScene(this.inventoryScene);
+		}
+	}
+
+	public void endItem1(Item1 item1) {
+		if (item1.getCloseVente()) {
 			this.inventoryScene.setRoot(this.loadInventory());
 			this.primaryStage.setScene(this.inventoryScene);
 		}
@@ -683,19 +704,29 @@ public class Game {
             		 gridPane.add(vBox, j, i);
 
 					 img.setOnMouseClicked(e -> {
-						 Objet objet = new Objet(this.primaryStage, item, this.player);
-						 objet.setCloseChangeListener(close -> {
-							 if (close) {
-								 this.endObjet(objet);
-								 this.primaryStage.setScene(this.mapScene);
-							 }
-						 });
-						 objet.setUseChangeListener(use -> {
-							 if(use){
-								 clickInventory(item);
-							 }
-						 });
+						 if (item.getName().equals("item1")){
+							 Item1 item1 = new Item1(this.primaryStage, this.player);
+							 item1.setCloseChangeListener(close -> {
+								 if (close) {
+									 this.endItem1(item1);
+									 this.primaryStage.setScene(this.mapScene);
+								 }
+							 });
+						 } else {
+							 Objet objet = new Objet(this.primaryStage, item, this.player);
+							 objet.setCloseChangeListener(close -> {
+								 if (close) {
+									 this.endObjet(objet);
+									 this.primaryStage.setScene(this.mapScene);
+								 }
+							 });
+							 objet.setUseChangeListener(use -> {
+								 if(use){
+									 clickInventory(item);
+								 }
+							 });
 
+						 }
 					 });
 
 					 str.setOnMouseClicked(e -> {
@@ -718,6 +749,7 @@ public class Game {
          }
         return gridPane;
 	}
+
 
 	/**
 	 * Handles the interaction when clicking on an item in the player's inventory.
@@ -763,6 +795,8 @@ public class Game {
 			this.player.setMoney(currentMoney+10);
 			this.mapScene.setRoot(this.loadBiome());
 			this.player.useObject(itemName);
+		} else if (Objects.equals(itemName, Constantes.ITEM_1.getName())) {
+			GridPane grid = new GridPane();
 		}
 		this.primaryStage.setScene(objetScene);
 	}

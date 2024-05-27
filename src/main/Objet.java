@@ -152,7 +152,10 @@ public class Objet {
             if (this.item.getName().equals(Constantes.ITEM_OVER.getName())) {
                 handleUseBtn();
                 this.primaryStage.setScene(endGameOver());
-            } else {
+            } else if(this.item.getName().equals(Constantes.ITEM_1.getName())){
+
+            }
+            else {
                 handleUseBtn();
                 this.scene.setRoot(this.loadObjet());
                 this.primaryStage.setScene(this.scene);
@@ -164,6 +167,8 @@ public class Objet {
 
         return vBox;
     }
+
+
 
     /**
      * Loads the game over scene.
