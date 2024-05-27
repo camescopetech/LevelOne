@@ -730,17 +730,29 @@ public class Game {
 					 });
 
 					 str.setOnMouseClicked(e -> {
-						 Objet objet = new Objet(this.primaryStage, item, this.player);
-						 objet.setCloseChangeListener(close -> {
-							 if (close) {
-								 this.endObjet(objet);
-							 }
-						 });
-						 objet.setUseChangeListener(use -> {
-							 if(use){
-								 clickInventory(item);
-							 }
-						 });
+						 if (item.getName().equals("item1")){
+							 Item1 item1 = new Item1(this.primaryStage, this.player);
+							 item1.setCloseChangeListener(close -> {
+								 if (close) {
+									 this.endItem1(item1);
+									 this.primaryStage.setScene(this.mapScene);
+								 }
+							 });
+						 } else {
+							 Objet objet = new Objet(this.primaryStage, item, this.player);
+							 objet.setCloseChangeListener(close -> {
+								 if (close) {
+									 this.endObjet(objet);
+									 this.primaryStage.setScene(this.mapScene);
+								 }
+							 });
+							 objet.setUseChangeListener(use -> {
+								 if(use){
+									 clickInventory(item);
+								 }
+							 });
+
+						 }
 
 					 });
 
