@@ -346,12 +346,22 @@ public class Game {
 					} else {
 						this.loadTextBox("Je n'ai rien a échanger");
 					}
-				}
-				else {
+				} else if (this.biome.getTile(x, y).getPnj().getName().equals("newPnj")) {
+					if (this.biome.getTile(x, y).getPnj().getInventory().isEmpty()) {
+						this.loadTextBox("Je ne possède rien.");
+					} else {
+						CustomPopup.showPopup("New PNJ", "NEW PNJ", "Nouveau PNJ qui donne le contenu de son inventaire s'il n'est pas vide.");
+						Pnj pnj = this.biome.getTile(x, y).getPnj();
+						String str = "Je possède : ";
+						for (int i = 0; i < pnj.getInventory().size(); i++) {
+							str += " l'item " + pnj.getInventoryElement(i).getName();
+						}
+						this.loadTextBox(str);
+					}
+				} else {
 					CustomPopup.showPopup("Vieillard", "Vieillard", "Parlez avec le vieillard pour connaître votre quête.");
 					this.loadTextBox(this.biome.getTile(x, y).getPnj().getDialog()[0]);
 				}
-
 			}
 			else if(this.biome.getTile(x, y).getPokemon() != null) {
 				System.out.println("Debut du combat");

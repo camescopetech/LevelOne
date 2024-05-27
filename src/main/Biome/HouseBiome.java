@@ -49,6 +49,12 @@ public class HouseBiome extends Biome {
 		this.getTile(7, 6).setPnj(new Pnj("main/img/voleur.png", dialogNew, "voleur", 0));
 		this.getTile(7, 6).getPnj().getInventory().add(Constantes.ITEM_X);
 
+		String[] dialogNewPNJ = {""};
+		this.getTile(5,6).setPnj(new Pnj("main/img/swap.png", dialogNewPNJ, "newPnj", 0));
+		this.getTile(5,6).getPnj().getInventory().add(Constantes.ITEM_X.deepCopy());
+		this.getTile(5,6).getPnj().getInventory().add(Constantes.ITEM_OVER.deepCopy());
+		this.getTile(5,6).getPnj().getInventory().add(Constantes.ITEM_TELEPORTATION.deepCopy());
+
 		// Loot
 		this.getTile(8, 2).setItem(Constantes.ITEM_POTION.deepCopy());
 

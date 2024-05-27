@@ -1,0 +1,14 @@
+Inventaire max de taille 5 :
+Déjà implémenté dans le jeu. Cet attribut est rajouté dans la classe Entity, ainsi toute entité a une taille max d'inventaire.
+La taille d'inventaire de 5 est attribué au joueur dans la classe Player.
+L'inventaire s'affiche en appuyant sur la touche I, les cases non disponibles sont en noirs.
+Si le joueur tente de récupérer plus d'autres une alerte s'affiche pour dire que l'inventaire est a son maximum.
+
+Nouveau PNJ :
+Le PNJ a été ajouté dans le premier monde, HouseBiome ligne 53.
+Il a dans son inventaire 3 objets.
+Quand on interagit avec ce PNJ (avec la touche F) une texte box s'affiche avec soit la liste des items de son inventaire
+soit "Je ne possède rien" comme texte.
+
+
+
